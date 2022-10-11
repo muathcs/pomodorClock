@@ -1,68 +1,61 @@
-import { useEffect, useState } from "react"
+import { clear } from "@testing-library/user-event/dist/clear";
+import { useEffect, useRef } from "react";
 
-import Clock from "./Clock"
+const Actions = ({seconds, minutes, setMinutes, setSeconds}) =>{
 
-const Actions = () =>{
 
-    const [clock, setClock] = useState(3)
-    const startingMinutes = 5;
-    let time = startingMinutes * 60;
+
     
 
+    let time = useRef(5*60);
+    let start = useRef(0);
 
 
-
-
-
-    const checker = () =>{
-        console.log(document.getElementById("seconds").innerText)
-        
-    }
     const setUpClock = () =>{
- 
-                const totalTime = document.querySelector(".clock");
-                let countdownEl = document.querySelector("#clock");
                 let Int;
 
-                if (time > 0) {
-                    time--;
-                    let minutes = Math.floor(time / 60);
-                    let seconds = time % 60;
+                if (time.current > 0) {
+                    time.current--;
+                    let minutes = Math.floor(time.current / 60);
+
+                    let seconds = time.current % 60;
                     seconds = seconds < 10 ? "0" + seconds : seconds;
                     minutes = minutes < 10 ? "0" + minutes : minutes;
                     localStorage.setItem("time", `${minutes}:${seconds}`);
                     let newArr = localStorage.getItem("time");
-                    console.log(minutes)
-                    console.log(seconds)
-                    document.getElementById('minutes').innerText = minutes + ":";
-                    document.getElementById('seconds').innerText = seconds;
-                    // this.countdownEl[0].innerHTML = `${newArr}`
+             
+                    setSeconds(seconds)
+                    setMinutes(minutes)
+
                 } else {
-                    // countdownEl[0].innerHTML = `00:00`;
-                    // console.log("hello")
-                    // clearInterval(Int);
+
                     clearInterval(start)
                 }
 
               
             }
 
-        let start;
+
 
         const startClock = () =>{
-            start = setInterval(()=>{
+
+                clearInterval(start.current)
+                start.current = setInterval(()=>{
                 setUpClock()        
             }, 1000)
+
         }
-        
+
         const stopClock = () =>{
-             clearInterval(start)
+            clearInterval(start.current)
         }
+
+
 
     return(
         <div id="actions">
-            <button onClick={startClock}  id="start">Start</button>
-            <button onClick={stopClock} id="stop">Stop</button>
+            <button id="start" onClick={startClock}>Start</button>
+            <button id="stop" onClick={stopClock} id="stop">Stop</button>
             <button id="reset">Reset</button>
         </div>
     )

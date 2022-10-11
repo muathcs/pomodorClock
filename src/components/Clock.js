@@ -1,7 +1,11 @@
-const Clock = () =>{
+const Clock = ({minutes, seconds}) =>{
+
+    const myClock = "hello";
+
     return(
         <div id="clock">
-            <span id="minutes">05:</span><span id="seconds">00</span>
+
+            <span id="minutes">{minutes}</span><span id="seconds">:{seconds}</span>
         </div>
     )
 }
