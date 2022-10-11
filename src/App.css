@@ -39,4 +39,54 @@
   border: 0.1px solid black;
   padding: 10px 70px;
   background-color: tomato;
+  cursor: pointer;
+}
+
+.top-div button:hover{
+  background-color: rgb(220, 92, 69);
+}
+
+
+#clock{
+  font-size: 60px;
+  margin-top: .5em;
+  font-weight: bolder;
+}
+
+#actions button{
+  
+  border: 0.1px solid black;
+  padding: 10px 30px;
+  margin: 2.5em 2em;
+  cursor: pointer;
+
+}
+
+#actions button:hover{
+  
+  border: 0.1px solid black;
+  background-image: linear-gradient(rgb(0 0 0/40%) 0 0);;
+  padding: 10px 30px;
+  margin: .5em 2em;
+  cursor: pointer;
+}
+
+#start{
+  background-color: #5da423;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+}
+#stop{
+  background-color: #c60f13;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+}
+
+#reset{
+  background-color: #d0d0d0;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
 }
