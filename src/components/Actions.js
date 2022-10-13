@@ -1,18 +1,10 @@
 import { clear } from "@testing-library/user-event/dist/clear";
 import { useEffect, useRef } from "react";
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start}) =>{
-
-
-
-    
-
-    // let time = useRef(timer*60);
-    // let start = useRef(0);
+const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType}) =>{
 
 
     const setUpClock = () =>{
-                let Int;
 
                 if (timer.current > 0) {
                     timer.current--;
@@ -31,14 +23,10 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start}) =>{
 
                     clearInterval(start)
                 }
-
-              
             }
 
-
-
         const startClock = () =>{
-
+            console.log("her", timer);
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
                 setUpClock()        
@@ -50,13 +38,34 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start}) =>{
             clearInterval(start.current)
         }
 
+        const reset = () =>{
+            console.log(timer.current);
+            setSeconds("00");
+            clearInterval(start.current);
+
+            switch (clockType){
+                case "pomodor":
+                    setMinutes("30");
+                    timer.current = 30 * 60;
+                    break;
+                case "shortbreak":
+                    setMinutes("05");
+                    timer.current = 5 * 60;
+                    break;
+                case "longbreak":
+                    setMinutes("10");
+                    timer.current = 5 * 60;
+                    break;
+            }
+        }
+
 
 
     return(
         <div id="actions">
             <button id="start" onClick={startClock}>Start</button>
             <button id="stop" onClick={stopClock} id="stop">Stop</button>
-            <button id="reset">Reset</button>
+            <button onClick={reset} id="reset">Reset</button>
         </div>
     )
 }

@@ -11,6 +11,7 @@ function App() {
 
   const [minutes, setMinutes] = useState("05");
   const[seconds, setSeconds] = useState("00");
+  const[clockType, setClockType] = useState("")
   const timer = useRef(0)
   let start = useRef(0);
 
@@ -18,16 +19,13 @@ function App() {
 
 
 
-  // console.log(seconds)
-  const [pomodor, setPomodor] = useState("FirstSignhaha");
-
 
   return (
     <div className="App">
       <p>Pomodor Clock</p>
-        <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} />  
+        <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} />  
         <Clock minutes={minutes} seconds={seconds} /> 
-        <Actions minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start}  />
+        <Actions minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} clockType={clockType}  />
     </div>
   );
 }

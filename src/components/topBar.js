@@ -1,6 +1,9 @@
 
 
-const TopBar = ({setMinutes, timer, setSeconds, start}) => {
+const TopBar = ({setMinutes, timer, setSeconds, start, setClockType}) => {
+
+
+
 
 
     function pomodor(){
@@ -8,6 +11,8 @@ const TopBar = ({setMinutes, timer, setSeconds, start}) => {
         setMinutes("30");
         setSeconds("00");
         timer.current = 30 * 60;
+        setClockType("pomodor");
+
 
     }
 
@@ -16,6 +21,8 @@ const TopBar = ({setMinutes, timer, setSeconds, start}) => {
         setMinutes("05");
         setSeconds("00");
         timer.current = 5 * 60;
+        setClockType("shortbreak");
+
     }
     
     function longBreak(){
@@ -23,6 +30,9 @@ const TopBar = ({setMinutes, timer, setSeconds, start}) => {
         setMinutes("10");
         setSeconds("00");
         timer.current = 10 * 60;
+        setClockType("longbreak");
+
+
     }
     return(
         <div>
