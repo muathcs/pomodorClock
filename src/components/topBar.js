@@ -1,11 +1,10 @@
 
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
+import { useState } from "react";
+import Settings from "./settings";
 
 const TopBar = ({setMinutes, timer, setSeconds, start, setClockType}) => {
-
-
-
-
-
+const [trigger, setTrigger] = useState(false);
     function pomodor(){
         clearInterval(start.current);
         setMinutes("30");
@@ -34,13 +33,21 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType}) => {
 
 
     }
+
+    function openSettings(){
+        setTrigger(true);
+    }
+
     return(
         <div>
            <div className="top-div">
                 <button onClick={pomodor}>Pomodor</button>
                 <button onClick={shortBreak}>Short Break</button>
                 <button onClick={longBreak}>Long Long Break</button>
+                <button onClick={openSettings} >Settings</button>
            </div>
+           <Settings trigger={trigger} setTrigger={setTrigger} >
+            </Settings>
         </div>
     )
 }

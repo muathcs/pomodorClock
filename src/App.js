@@ -7,6 +7,7 @@ import react, {useEffect, useState, useRef} from "react";
 import TopBar from './components/topBar';
 import Clock from './components/Clock'
 import Actions from "./components/Actions"
+import Settings from './components/settings';
 function App() {
 
   const [minutes, setMinutes] = useState("05");

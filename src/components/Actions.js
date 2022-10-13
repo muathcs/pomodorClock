@@ -20,7 +20,6 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     setMinutes(minutes)
 
                 } else {
-
                     clearInterval(start)
                 }
             }
