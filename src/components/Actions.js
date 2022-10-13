@@ -1,24 +1,24 @@
 import { clear } from "@testing-library/user-event/dist/clear";
 import { useEffect, useRef } from "react";
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds}) =>{
+const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start}) =>{
 
 
 
     
 
-    let time = useRef(5*60);
-    let start = useRef(0);
+    // let time = useRef(timer*60);
+    // let start = useRef(0);
 
 
     const setUpClock = () =>{
                 let Int;
 
-                if (time.current > 0) {
-                    time.current--;
-                    let minutes = Math.floor(time.current / 60);
+                if (timer.current > 0) {
+                    timer.current--;
+                    let minutes = Math.floor(timer.current / 60);
 
-                    let seconds = time.current % 60;
+                    let seconds = timer.current % 60;
                     seconds = seconds < 10 ? "0" + seconds : seconds;
                     minutes = minutes < 10 ? "0" + minutes : minutes;
                     localStorage.setItem("time", `${minutes}:${seconds}`);
@@ -42,7 +42,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds}) =>{
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
                 setUpClock()        
-            }, 1000)
+            }, 0)
 
         }
 
