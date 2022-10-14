@@ -3,40 +3,42 @@ import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import { useState } from "react";
 import Settings from "./settings";
 
-const TopBar = ({setMinutes, timer, setSeconds, start, setClockType}) => {
+import startClock from "./settings"
+import check from "./settings"
 
-    // console.log(document.getElementById("pomodor").value);
+const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTimer, shortBreak, longBreak, setPomodorTimer, setShortBreak, setLongBreak}) => {
+
 
     const [trigger, setTrigger] = useState(false);
 
     
     function pomodor(){
         clearInterval(start.current);
-        setMinutes("30");
+        setMinutes(pomodorTimer);
         setSeconds("00");
+        console.log("pomodor", pomodorTimer)
         timer.current = 30 * 60;
         setClockType("pomodor");
 
-
     }
 
-    function shortBreak(){
+    function shortBreakSet(){
         clearInterval(start.current);
-        setMinutes("05");
+        setMinutes(shortBreak);
         setSeconds("00");
+        console.log("shotBreak", shortBreak)
         timer.current = 5 * 60;
         setClockType("shortbreak");
 
     }
     
-    function longBreak(){
+    function longBreakSet(){
         clearInterval(start.current);
-        setMinutes("10");
+        setMinutes(longBreak);
         setSeconds("00");
+        console.log("Long Break", longBreak)
         timer.current = 10 * 60;
         setClockType("longbreak");
-
-
     }
 
     function openSettings(){
@@ -47,11 +49,11 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType}) => {
         <div>
            <div className="top-div">
                 <button onClick={pomodor}>Pomodor</button>
-                <button onClick={shortBreak}>Short Break</button>
-                <button onClick={longBreak}>Long Long Break</button>
+                <button onClick={shortBreakSet}>Short Break</button>
+                <button onClick={longBreakSet}>Long Long Break</button>
                 <button onClick={openSettings} >Settings</button>
            </div>
-           <Settings trigger={trigger} setTrigger={setTrigger} timer={timer} >
+           <Settings setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak} >
             </Settings>
         </div>
     )

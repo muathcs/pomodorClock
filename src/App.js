@@ -14,9 +14,9 @@ function App() {
   const[seconds, setSeconds] = useState("00");
   const[clockType, setClockType] = useState("")
 
-  const pomodorTimer = useRef(0);
-  const shortBreak = useRef(0);
-  const longBreak = useRef(0);
+  const [pomodorTimer, setPomodorTimer] = useState(30);
+  const [shortBreak, setShortBreak] = useState(4);
+  const [longBreak, setLongBreak] = useState(11);
   const timer = useRef(0)
   let start = useRef(0);
 
@@ -28,9 +28,9 @@ function App() {
   return (
     <div className="App">
       <p>Pomodor Clock</p>
-        <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} />  
+        <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />  
         <Clock minutes={minutes} seconds={seconds} /> 
-        <Actions minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} clockType={clockType} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}  />
+        <Actions minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}  />
     </div>
   );
 }
