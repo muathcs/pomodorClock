@@ -4,7 +4,12 @@ import { useState } from "react";
 import Settings from "./settings";
 
 const TopBar = ({setMinutes, timer, setSeconds, start, setClockType}) => {
-const [trigger, setTrigger] = useState(false);
+
+    // console.log(document.getElementById("pomodor").value);
+
+    const [trigger, setTrigger] = useState(false);
+
+    
     function pomodor(){
         clearInterval(start.current);
         setMinutes("30");
@@ -46,7 +51,7 @@ const [trigger, setTrigger] = useState(false);
                 <button onClick={longBreak}>Long Long Break</button>
                 <button onClick={openSettings} >Settings</button>
            </div>
-           <Settings trigger={trigger} setTrigger={setTrigger} >
+           <Settings trigger={trigger} setTrigger={setTrigger} timer={timer} >
             </Settings>
         </div>
     )

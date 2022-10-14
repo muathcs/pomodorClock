@@ -29,7 +29,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
                 setUpClock()        
-            }, 0)
+            }, 1000)
 
         }
 
@@ -63,7 +63,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
     return(
         <div id="actions">
             <button id="start" onClick={startClock}>Start</button>
-            <button id="stop" onClick={stopClock} id="stop">Stop</button>
+            <button id="stop" onClick={stopClock}>Stop</button>
             <button onClick={reset} id="reset">Reset</button>
         </div>
     )

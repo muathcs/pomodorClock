@@ -1,22 +1,30 @@
-import react from 'react'
+import react, {useState} from 'react'
 
 function Settings(props){
 
-    console.log("trgger", props.useTrigger)
+
+    const [input, setInput] = useState(props?.value ?? '')
 
     function close(){
         props.setTrigger(false);
     }
+
+    function log(e){
+        console.log(e.target.value);
+        setInput(e.target.value);
+        props.timer.current = e.target.value * 60;
+
+    }
     return(props.trigger) ? (
         <div className="settings">
             <div className='inner-settings'>
-                <button onClick={close} className="close-btn">close</button>
+                <button onClick={() => close()} className="close-btn">close</button>
                 {props.children}
 
                 <form className='setTime'>
 
                 <label>Pomodor:
-                    <input type="number" name="pomodor" />
+                    <input value={input} onChange={(e) => log(e)} type="number" name="pomodor" id='pomodor' />
                 </label>
 
                 <label>Short-Break:
