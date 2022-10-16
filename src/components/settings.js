@@ -6,12 +6,13 @@ import startClock from "./Actions"
 import setUpClock from "./Actions"
 import Actions from './Actions'
 
-function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeconds, setMinutes, setTrigger, trigger, setPomodorTimer, setShortBreak, setLongBreak}){
+function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeconds, setMinutes, setTrigger, trigger, setPomodorTimer, setShortBreak, setLongBreak, breakTime, setBreakTime}){
 
 
     const [pomodorInput, setPomodorInput] = useState('');
     const [shortBreakInput, setShortBreakInput] = useState('');
     const [longBreakInput, setLongBreakInput] = useState('');
+    const [BreakInput, setBreakInput] = useState('');
 
 
     function close(){
@@ -22,13 +23,10 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
     }
 
     function pomodor(e){
-        console.log("xx", e.target.value);
         setPomodorInput(e.target.value);
         setPomodorTimer(e.target.value)
         pomodorTimer = e.target.value;
         timer.current = e.target.value * 60;
-        // clearInterval(start.current);
-        setMinutes(pomodorTimer);
         setSeconds("00");
         setUpClock("pomodor")
 
@@ -40,7 +38,6 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
         shortBreak = e.target.value;
         setShortBreak(e.target.value)
         timer.current = e.target.value * 60;
-        setMinutes(shortBreak);
         setSeconds("00");
         setUpClock("shortbreak")
 
@@ -51,11 +48,14 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
         setLongBreak(e.target.value)
         longBreak = e.target.value;
         timer.current = e.target.value * 60;
-        setMinutes(longBreak);
         setSeconds("00");
         setUpClock("longBreak")
 
     }
+
+
+
+
 
     return(trigger) ? (
         <div className="settings">
@@ -66,15 +66,18 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
                 <form className='setTime'>
 
                 <label>Pomodor:
-                    <input value={pomodorInput} onChange={(e) => pomodor(e)} type="number" name="pomodor" id='pomodor' />
+                    <input value={pomodorInput} onChange={(e) => pomodor(e)} min="0" type="number" name="pomodor" id='pomodor' />
                 </label>
 
                 <label>Short-Break:
-                <input type="number" value={shortBreakInput} onChange={(e) => shortBreakSet(e)} name="shortBreak" id='shortBreak' />
+                <input type="number" value={shortBreakInput} onChange={(e) => {
+                    shortBreakSet(e)
+                }} name="shortBreak" id='shortBreak' />
                 </label>
 
                 <label>Long-Break:
-                    <input type="number" value={longBreakInput} onChange={(e) => longBreakSet(e)} name="longBreak" id='longBreak' />
+                    <input type="number" value={longBreakInput} onChange={(e) => {
+                        longBreakSet(e)}} name="longBreak" id='longBreak' />
                 </label>
                 </form>
             </div>

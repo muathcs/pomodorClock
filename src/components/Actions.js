@@ -38,6 +38,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                 case "longbreak":
                     timer.current = longBreak * 60;
                     break;
+
             }
             
                 clearInterval(start.current)
@@ -72,6 +73,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     setMinutes(longBreak / 60);
                     timer.current = longBreak * 60;
                     break;
+
             }
         }
 

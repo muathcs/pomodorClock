@@ -16,8 +16,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
         clearInterval(start.current);
         setMinutes(pomodorTimer);
         setSeconds("00");
-        console.log("pomodor", pomodorTimer)
-        timer.current = 30 * 60;
+        // timer.current = 30 * 60;
         setClockType("pomodor");
 
     }
@@ -26,8 +25,6 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
         clearInterval(start.current);
         setMinutes(shortBreak);
         setSeconds("00");
-        console.log("shotBreak", shortBreak)
-        timer.current = 5 * 60;
         setClockType("shortbreak");
 
     }
@@ -36,10 +33,9 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
         clearInterval(start.current);
         setMinutes(longBreak);
         setSeconds("00");
-        console.log("Long Break", longBreak)
-        timer.current = 10 * 60;
         setClockType("longbreak");
     }
+
 
     function openSettings(){
         setTrigger(true);
@@ -53,7 +49,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
                 <button onClick={longBreakSet}>Long Long Break</button>
                 <button onClick={openSettings} >Settings</button>
            </div>
-           <Settings setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak} >
+           <Settings setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}>
             </Settings>
         </div>
     )
