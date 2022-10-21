@@ -92,11 +92,14 @@
 }
 
 .settings{
-  background-color: red;
-  border: 2px solid black;
+  background-color: #3c6597;
+  border: 2px solid white;
   width: 450px;
   height: 250px;
   position: fixed;
+  color: white;
+  /* margin-left: 35%; */
+  right: 1.8em;
 }
 
 .setTime{
