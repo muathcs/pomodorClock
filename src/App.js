@@ -15,16 +15,20 @@ function App() {
   const[clockType, setClockType] = useState("")
 
   const [pomodorTimer, setPomodorTimer] = useState(30);
-  const [shortBreak, setShortBreak] = useState(4);
-  const [longBreak, setLongBreak] = useState(11);
+  const [shortBreak, setShortBreak] = useState(5);
+  const [longBreak, setLongBreak] = useState(10);
 
   const timer = useRef(0)
   let start = useRef(0);
 
+  function setTimer(here){
+    timer = here * 60;
+  }
+
   useEffect(() =>{
     setMinutes(pomodorTimer);
     setSeconds("00");
-    timer.current = 31 * 60;
+    timer.current = pomodorTimer * 60;
     setClockType("pomodor");
   },[])
 

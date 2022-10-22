@@ -3,47 +3,45 @@ import { useEffect, useRef } from "react";
 
 const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak}) =>{
 
-
-    const setUpClock = (timerType) =>{
-
-                if (timerType.current > 0) {
-                    timerType.current--;
-                    let minutes = Math.floor(timerType.current / 60);
-
-                    let seconds = timerType.current % 60;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    localStorage.setItem("time", `${minutes}:${seconds}`);
-                    let newArr = localStorage.getItem("time");
-             
-                    setSeconds(seconds)
-                    setMinutes(minutes)
+    // timer = timer.current;
+    const setUpClock = (timer) =>{
+        console.log(timer)
+        if (timer.current > 0) {
+            timer.current--;
+            let minutes = Math.floor(timer.current / 60);
+            
+            let seconds = timer.current % 60;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            localStorage.setItem("time", `${minutes}:${seconds}`);
+            let newArr = localStorage.getItem("time");
+            
+            setSeconds(seconds)
+            setMinutes(minutes)
 
                 } else {
                     clearInterval(start)
                 }
             }
 
-        const startClock = (timerType) =>{
-            // console.log("her", timer);
+        const startClock = () =>{
+            // switch (clockType){
+            //     case "pomodor":
+            //         // timer.current = pomodorTimer * 60;
+            //         break;
+            //     case "shortbreak":
+            //         timer.current = shortBreak * 60;
+            //         break;
+            //     case "longbreak":
+            //         timer.current = longBreak * 60;
+            //         break;
 
-            switch (clockType){
-                case "pomodor":
-                    timer.current = pomodorTimer * 60;
-                    console.log("myCase", pomodorTimer);
-                    break;
-                case "shortbreak":
-                    timer.current = shortBreak * 60;
-                    break;
-                case "longbreak":
-                    timer.current = longBreak * 60;
-                    break;
-
-            }
+            // }
             
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
-                setUpClock(timerType)        
+                console.log("HERE", timer.current / 60)    
+                setUpClock(timer)    
             }, 1000)
 
         }
@@ -54,7 +52,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
         }
 
         const reset = () =>{
-            console.log(timer.current);
+            console.log(timer);
             setSeconds("00");
             clearInterval(start.current);
 
@@ -71,7 +69,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     break;
                 case "longbreak":
                     setMinutes(longBreak / 60);
-                    timer.current = longBreak * 60;
+                    timer = longBreak * 60;
                     break;
 
             }
@@ -84,7 +82,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
     return(
         <div id="actions">
-            <button id="start" onClick={() => startClock(timer)}>Start</button>
+            <button id="start" onClick={startClock}>Start</button>
             <button id="stop" onClick={stopClock}>Stop</button>
             <button onClick={reset} id="reset">Reset</button>
         </div>
