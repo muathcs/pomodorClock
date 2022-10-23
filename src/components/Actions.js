@@ -1,11 +1,10 @@
 import { clear } from "@testing-library/user-event/dist/clear";
 import { useEffect, useRef } from "react";
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak}) =>{
+const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setPomodoros}) =>{
 
     // timer = timer.current;
     const setUpClock = (timer) =>{
-        console.log(timer)
         if (timer.current > 0) {
             timer.current--;
             let minutes = Math.floor(timer.current / 60);
@@ -20,7 +19,14 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
             setMinutes(minutes)
 
                 } else {
-                    clearInterval(start)
+                    
+
+                    if(clockType == "pomodor" ){
+
+                        setPomodoros((prevPomo) => prevPomo+1);
+                    }
+                    console.log("sdfjhljadsflhkjs")
+                    clearInterval(start.current)
                 }
             }
 
@@ -40,7 +46,6 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
             
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
-                console.log("HERE", timer.current / 60)    
                 setUpClock(timer)    
             }, 1000)
 
@@ -52,23 +57,20 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
         }
 
         const reset = () =>{
-            console.log(timer);
             setSeconds("00");
             clearInterval(start.current);
 
             switch (clockType){
                 case "pomodor":
-                    setMinutes(pomodorTimer / 60);
+                    setMinutes(pomodorTimer);
                     timer.current = pomodorTimer * 60;
-                    console.log("myCase", pomodorTimer);
                     break;
                 case "shortbreak":
-                    setMinutes(shortBreak / 60);
-                    console.log("cases", shortBreak)
+                    setMinutes(shortBreak);
                     timer.current = shortBreak * 60;
                     break;
                 case "longbreak":
-                    setMinutes(longBreak / 60);
+                    setMinutes(longBreak);
                     timer = longBreak * 60;
                     break;
 
