@@ -63,7 +63,7 @@ body{
     width: 500px;
     height: 65px;
     background-color: rgb(225, 225, 225);
-    margin: auto;
+    margin: 1.5em auto;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -77,4 +77,20 @@ body{
 #add-button:hover{
     background-color: rgb(185, 181, 181);
     color: white;
+}
+
+.inner-settings{
+}
+
+.projects{
+    /* background-color: red; */
+    display: flex;
+
+}
+
+.settings{
+    position: relative;
+    width: 500px;
+    height: 100px;
+    /* margin-left: auto; */
 }

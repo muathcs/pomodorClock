@@ -9,6 +9,8 @@ function Projects({pomodoros}) {
         setIsActive((current) => !current)
     }
 
+    // console.log(document.querySelectorAll(".container").map((item) => console.log(item)))
+    console.log()
 
 
 

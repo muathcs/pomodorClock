@@ -16,11 +16,15 @@ function App() {
   const[seconds, setSeconds] = useState("00");
   const[clockType, setClockType] = useState("")
 
+  const[projectName, setProjectName] = useState("")
+  const[projectTally, setProjectTally] = useState("")
+ 
   const [pomodorTimer, setPomodorTimer] = useState(30);
   const [shortBreak, setShortBreak] = useState(5);
   const [longBreak, setLongBreak] = useState(10);
-  const [pomodoros, setPomodoros] = useState(1)
-
+  const [pomodoros, setPomodoros] = useState(1);
+  const [project, setProject] = useState([]);
+ 
   const timer = useRef(0)
   let start = useRef(0);
 
@@ -46,8 +50,10 @@ function App() {
         <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}/>  
         <Clock minutes={minutes} seconds={seconds} /> 
         <Actions setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
-        <Projects pomodoros={pomodoros}/>
-        <AddPro />
+        {/* <Projects pomodoros={pomodoros}/> */}
+        {/* <Projects pomodoros={pomodoros}/> */}
+  
+        <AddPro project={project} setProject={setProject} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
     </div>
   );
 }
