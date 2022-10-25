@@ -10,6 +10,7 @@ import Actions from "./components/Actions"
 import Settings from './components/settings';
 import Projects from './components/Projects';
 import AddPro from './components/AddPro';
+import ProjectList from './components/ProjectList';
 function App() {
 
   const [minutes, setMinutes] = useState("05");
@@ -52,7 +53,10 @@ function App() {
         <Actions setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
         {/* <Projects pomodoros={pomodoros}/> */}
         {/* <Projects pomodoros={pomodoros}/> */}
-  
+
+
+
+        <ProjectList project={project} setProject={setProject}/>
         <AddPro project={project} setProject={setProject} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
     </div>
   );

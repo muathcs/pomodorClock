@@ -27,6 +27,18 @@ function AddPro({project, setProject, projectName, projectTally, setProjectName,
 
   }
 
+  const DisplayProj = (e) =>{
+
+    // e.preventDefault();
+
+    return(
+
+      <div>
+        hjsafdhjsafdhjk
+      </div>
+    )
+  }
+
 
   return (trigger) ? (
     
@@ -44,7 +56,7 @@ function AddPro({project, setProject, projectName, projectTally, setProjectName,
     </div>
      <div className="settings"> 
             <div className='inner-settings'>
-                <button className="close-btn">close</button>
+                <button onClick={() => setTrigger(false)} className="close-btn">close</button>
 
                 <form className='setTime'>
 
@@ -55,6 +67,8 @@ function AddPro({project, setProject, projectName, projectTally, setProjectName,
                 <label>Time:
                 <input min={0} type="number" onChange={handlePrjectTally} name="shortBreak" id='shortBreak' />
                 </label>
+
+                <button onClick={DisplayProj}>Add</button>
 
                 </form>
             </div>

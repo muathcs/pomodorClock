@@ -18,7 +18,7 @@ function Projects({pomodoros}) {
     <div>
         <div  onClick={isClicked} className={`container ${isActive ? "isClicked" : ""}`} >
             <div id='project-name'>
-                project Name
+                project Names
             </div>
             <div id='tally'>
                 {pomodoros}/34
