@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./styles/Projects.css";
-function Projects({pomodoros}) {
+function Projects({pomodoros, project}) {
 
     const [isActive, setIsActive] = useState(false);
 
@@ -12,13 +12,13 @@ function Projects({pomodoros}) {
     // console.log(document.querySelectorAll(".container").map((item) => console.log(item)))
     console.log()
 
-
+    console.log("todo", project)
 
   return (
     <div>
         <div  onClick={isClicked} className={`container ${isActive ? "isClicked" : ""}`} >
             <div id='project-name'>
-                project Names
+                {project.text}
             </div>
             <div id='tally'>
                 {pomodoros}/34

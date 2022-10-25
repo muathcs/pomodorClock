@@ -19,8 +19,11 @@ function AddPro({project, setProject, projectName, projectTally, setProjectName,
       ...project, 
       {text:projectName,
           tally:projectTally,
+          id:Math.random()*1000
       }
   ]);
+
+
 
   setProjectName("");
 

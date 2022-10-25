@@ -2,7 +2,7 @@ import React from 'react'
 import Projects from './Projects'
 function ProjectList({project, setProject}) {
   return (
-    //     <div className="todo-container">
+//     <div className="todo-container">
 //     <ul className="todo-list">
 //        {
 
@@ -19,7 +19,7 @@ function ProjectList({project, setProject}) {
         <ul>{
         
         project.map((project) => (
-            <Projects key={project.id}/>
+            <Projects project={project} key={project.id}/>
         ))
         
 
