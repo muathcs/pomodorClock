@@ -1,6 +1,8 @@
 import React from 'react'
+import AddPro from './AddPro'
 import Projects from './Projects'
-function ProjectList({project, setProject}) {
+
+function ProjectList({project, setProject, pomodoros}) {
   return (
 //     <div className="todo-container">
 //     <ul className="todo-list">
@@ -17,9 +19,11 @@ function ProjectList({project, setProject}) {
 
     <div>
         <ul>{
+          
         
         project.map((project) => (
-            <Projects project={project} key={project.id}/>
+            <Projects pomodoros={pomodoros} project={project} key={project.id}/>
+
         ))
         
 

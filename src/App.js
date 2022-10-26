@@ -56,7 +56,7 @@ function App() {
 
 
 
-        <ProjectList project={project} setProject={setProject}/>
+        <ProjectList pomodoros={pomodoros} project={project} setProject={setProject}/>
         <AddPro project={project} setProject={setProject} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
     </div>
   );

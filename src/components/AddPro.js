@@ -14,6 +14,9 @@ function AddPro({project, setProject, projectName, projectTally, setProjectName,
 
 
   const addProject = (e) =>{
+    e.preventDefault();
+
+    setTrigger(!trigger)
 
     setProject([
       ...project, 
@@ -47,44 +50,44 @@ function AddPro({project, setProject, projectName, projectTally, setProjectName,
     
     <div className='projects'>
 
-    <div>
-      <div onClick={() => {
+    <div className='clickedx'>
+      <div className='add-button clicked' onClick={() => {
 
-        setTrigger(!trigger)
-        addProject();
       
-      }}  id='add-button'>
-          +
-      </div>
-    </div>
-     <div className="settings"> 
-            <div className='inner-settings'>
-                <button onClick={() => setTrigger(false)} className="close-btn">close</button>
+      }} >
+
+
+
+          <div className="settings-proj"> 
+            <div className='inner-settings-proj'>
+                <button onClick={() => setTrigger(false)} className="close-btn-proj">close</button>
 
                 <form className='setTime'>
 
                 <label>Name:
-                    <input value={projectName} onChange={handleProjectName} name="pomodor" id='pomodor' />
+                    <input value={projectName} onChange={handleProjectName} name="pomodor" id='pomodor-proj' />
                 </label>
 
                 <label>Time:
-                <input min={0} type="number" onChange={handlePrjectTally} name="shortBreak" id='shortBreak' />
+                <input min={0} type="number" onChange={handlePrjectTally} name="shortBreak" id='shortBreak-proj' />
                 </label>
 
-                <button onClick={DisplayProj}>Add</button>
+                <button onClick={addProject}>Add</button>
 
                 </form>
             </div>
         </div>  
-        </div>
+      </div>
+    </div>
+     
+      </div>
   
   ) : (
     <div>
         <div onClick={()=> {
 
           setTrigger(!trigger)
-          addProject();
-        }}  id='add-button'>
+        }}  className='add-button-proj'>
             +
         </div>
     </div>

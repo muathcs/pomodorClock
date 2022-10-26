@@ -12,7 +12,7 @@ function Projects({pomodoros, project}) {
     // console.log(document.querySelectorAll(".container").map((item) => console.log(item)))
     console.log()
 
-    console.log("todo", project)
+    console.log("pomos", pomodoros)
 
   return (
     <div>
@@ -21,7 +21,7 @@ function Projects({pomodoros, project}) {
                 {project.text}
             </div>
             <div id='tally'>
-                {pomodoros}/34
+                {pomodoros}/{project.tally}
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ const Clock = ({minutes, seconds}) =>{
         <div id="clock">
 
             <span id="minutes">{minutes}</span><span id="seconds">:{seconds}</span>
+            
         </div>
     )
 }
