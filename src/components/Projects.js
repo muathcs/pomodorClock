@@ -2,44 +2,33 @@ import React, { useState } from 'react';
 import "./styles/Projects.css";
 function Projects({pomodoros, project, projects}) {
 
-    const [isActive, setIsActive] = useState();
 
-    const [toggleState, setToggleState] = useState(0);
-
-
-    const setIndex = (index) => {
-        setToggleState(index);
-    }
+    // const [toggleState, setToggleState] = useState(0);
 
 
-    const setClass = (index, className) => 
-        toggleState === index ? className : '';
+    // const setIndex = (index) => {
+    //     setToggleState(index);
+    // }
+
+
+    // const setClass = (index, className) => 
+    //     toggleState === index ? className : '';
     
 
 
-    const isClicked = (index) =>{
-        // console.log("hello")
-        // console.log("toggle-State: ", toggleState, " Index: ", index);
-    }
+    // const isClicked = (index) =>{
+    //     // console.log("hello")
+    //     // console.log("toggle-State: ", toggleState, " Index: ", index);
+    // }
 
 
 
   return (
     <div>
-        <div className={`container ${setClass(project.id, 'activeClass')}`} 
-        
-        onClick={() => {
-            setIndex(project.id)
-            isClicked();
-            
-            }} >
-
-
+        <div>
                 <div id='project-name' className="divCard" item-color='1' title='Tab 1'>
-                    {project.text} -- {isActive === project.id ? "Hello" : "Not hello"}
+                    {project.text}
                 </div>
-
-            
 
             <div id='tally'>
                 {pomodoros}/{project.tally}

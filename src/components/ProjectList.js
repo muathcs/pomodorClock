@@ -32,8 +32,8 @@ function ProjectList({projects, setProjects, pomodoros}) {
           
         
         projects.map((project) => (
-          <div onClick={() => setIndex(project.id)} className={`container ${setClass(project.id, "activeClass")}`}>
-            <Projects pomodoros={pomodoros} project={project} key={project.id} projects={projects} onClick={log} />
+          <div onClick={() => setIndex(project.id)} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
+            <Projects pomodoros={pomodoros} project={project}projects={projects} onClick={log} />
           </div>
 
         ))

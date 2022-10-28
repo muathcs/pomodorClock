@@ -123,9 +123,9 @@ body{
 
 
   .activeClass{
-    background-color: red;
+    border-left: 5px solid black;
   }
 
-  .newHello{
-    background-color: blue;
+  .activeClass:hover{
+    border-left: 5px solid black;
   }
