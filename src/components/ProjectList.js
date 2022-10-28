@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddPro from './AddPro'
 import Projects from './Projects'
+import "./styles/Projects.css"
 
 function ProjectList({projects, setProjects, pomodoros}) {
 
 
-  const log = () =>{
-    console.log("1238932478924378")
+  const log = (id) =>{
+    console.log(id)
   }
+
+
+  const [toggleState, setToggleState] = useState(0);
+
+
+    const setIndex = (index) => {
+        setToggleState(index);
+    }
+
+
+    const setClass = (index, className) => 
+        toggleState === index ? className : '';
+    
+  
   return (
 
 
@@ -17,7 +32,9 @@ function ProjectList({projects, setProjects, pomodoros}) {
           
         
         projects.map((project) => (
-            <Projects pomodoros={pomodoros} project={project} key={project.id} projects={projects} />
+          <div onClick={() => setIndex(project.id)} className={`container ${setClass(project.id, "activeClass")}`}>
+            <Projects pomodoros={pomodoros} project={project} key={project.id} projects={projects} onClick={log} />
+          </div>
 
         ))
         

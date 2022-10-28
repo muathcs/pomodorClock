@@ -4,28 +4,41 @@ function Projects({pomodoros, project, projects}) {
 
     const [isActive, setIsActive] = useState();
 
+    const [toggleState, setToggleState] = useState(0);
 
-    const isClicked = () =>{
-        // setIsActive((current) => !current)
+
+    const setIndex = (index) => {
+        setToggleState(index);
     }
 
-    // console.log(document.querySelectorAll(".container").map((item) => console.log(item)))
+
+    const setClass = (index, className) => 
+        toggleState === index ? className : '';
+    
+
+
+    const isClicked = (index) =>{
+        // console.log("hello")
+        // console.log("toggle-State: ", toggleState, " Index: ", index);
+    }
+
 
 
   return (
     <div>
-        <div  onClick={() => {
-            setIsActive(project.id);
-            console.log(projects)
+        <div className={`container ${setClass(project.id, 'activeClass')}`} 
+        
+        onClick={() => {
+            setIndex(project.id)
+            isClicked();
+            
+            }} >
 
-        }} className={`container ${isActive === project.id ? "isClicked" : ""}`} >
 
-            {projects.map((item) => (
-                <div id='project-name' onClick={() => setIsActive(item.id)} key={item.id}>
+                <div id='project-name' className="divCard" item-color='1' title='Tab 1'>
                     {project.text} -- {isActive === project.id ? "Hello" : "Not hello"}
                 </div>
 
-            ))}
             
 
             <div id='tally'>
@@ -33,6 +46,8 @@ function Projects({pomodoros, project, projects}) {
             </div>
 
         </div>
+
+  
     </div>
   )
 }

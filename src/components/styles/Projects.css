@@ -116,3 +116,16 @@ body{
     
 
 }
+
+.activeClass .divCard[item-color='1'] {
+    background-color: lightblue;
+  }
+
+
+  .activeClass{
+    background-color: red;
+  }
+
+  .newHello{
+    background-color: blue;
+  }
