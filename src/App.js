@@ -24,7 +24,7 @@ function App() {
   const [shortBreak, setShortBreak] = useState(5);
   const [longBreak, setLongBreak] = useState(10);
   const [pomodoros, setPomodoros] = useState(1);
-  const [project, setProject] = useState([]);
+  const [projects, setProjects] = useState([]);
  
   const timer = useRef(0)
   let start = useRef(0);
@@ -56,8 +56,8 @@ function App() {
 
 
 
-        <ProjectList pomodoros={pomodoros} project={project} setProject={setProject}/>
-        <AddPro project={project} setProject={setProject} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
+        <ProjectList pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
+        <AddPro projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
     </div>
   );
 }

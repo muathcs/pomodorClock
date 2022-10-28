@@ -23,6 +23,7 @@ body{
 #tally{
     position: absolute;
     right: 0.5em;
+    bottom: 1.2rem;
     font-size: 24px;
 }
 

@@ -1,28 +1,37 @@
 import React, { useState } from 'react';
 import "./styles/Projects.css";
-function Projects({pomodoros, project}) {
+function Projects({pomodoros, project, projects}) {
 
-    const [isActive, setIsActive] = useState(false);
+    const [isActive, setIsActive] = useState();
 
 
     const isClicked = () =>{
-        setIsActive((current) => !current)
+        // setIsActive((current) => !current)
     }
 
     // console.log(document.querySelectorAll(".container").map((item) => console.log(item)))
-    console.log()
 
-    console.log("pomos", pomodoros)
 
   return (
     <div>
-        <div  onClick={isClicked} className={`container ${isActive ? "isClicked" : ""}`} >
-            <div id='project-name'>
-                {project.text}
-            </div>
+        <div  onClick={() => {
+            setIsActive(project.id);
+            console.log(projects)
+
+        }} className={`container ${isActive === project.id ? "isClicked" : ""}`} >
+
+            {projects.map((item) => (
+                <div id='project-name' onClick={() => setIsActive(item.id)} key={item.id}>
+                    {project.text} -- {isActive === project.id ? "Hello" : "Not hello"}
+                </div>
+
+            ))}
+            
+
             <div id='tally'>
                 {pomodoros}/{project.tally}
             </div>
+
         </div>
     </div>
   )
