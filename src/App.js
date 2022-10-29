@@ -18,9 +18,10 @@ function App() {
   const[clockType, setClockType] = useState("")
 
   const[projectName, setProjectName] = useState("")
-  const[projectTally, setProjectTally] = useState("")
+  const[projectTally, setProjectTally] = useState("");
+  const[counter, setCounter] = useState(1);
  
-  const [pomodorTimer, setPomodorTimer] = useState(30);
+  const [pomodorTimer, setPomodorTimer] = useState(0.1);
   const [shortBreak, setShortBreak] = useState(5);
   const [longBreak, setLongBreak] = useState(10);
   const [pomodoros, setPomodoros] = useState(1);
@@ -50,14 +51,14 @@ function App() {
       <p>Pomodor Clock</p>
         <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}/>  
         <Clock minutes={minutes} seconds={seconds} /> 
-        <Actions setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
+        <Actions counter={counter} setCounter={setCounter} setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
         {/* <Projects pomodoros={pomodoros}/> */}
         {/* <Projects pomodoros={pomodoros}/> */}
 
 
 
-        <ProjectList pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
-        <AddPro projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
+        <ProjectList counter={counter} pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
+        <AddPro counter={counter} projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
     </div>
   );
 }

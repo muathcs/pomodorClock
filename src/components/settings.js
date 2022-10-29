@@ -28,7 +28,6 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
         pomodorTimer = e.target.value;
         timer.current = e.target.value * 60;
         setSeconds("00");
-        setUpClock("pomodor")
 
 
     }
@@ -39,7 +38,6 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
         setShortBreak(e.target.value)
         timer.current = e.target.value * 60;
         setSeconds("00");
-        setUpClock("shortbreak")
 
     }
 
@@ -49,7 +47,6 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
         longBreak = e.target.value;
         timer.current = e.target.value * 60;
         setSeconds("00");
-        setUpClock("longBreak")
 
     }
 

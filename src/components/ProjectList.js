@@ -3,7 +3,7 @@ import AddPro from './AddPro'
 import Projects from './Projects'
 import "./styles/Projects.css"
 
-function ProjectList({projects, setProjects, pomodoros}) {
+function ProjectList({projects, setProjects, pomodoros, counter}) {
 
 
   const log = (id) =>{
@@ -33,7 +33,7 @@ function ProjectList({projects, setProjects, pomodoros}) {
         
         projects.map((project) => (
           <div onClick={() => setIndex(project.id)} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
-            <Projects pomodoros={pomodoros} project={project}projects={projects} onClick={log} />
+            <Projects counter={counter} pomodoros={pomodoros} project={project}projects={projects} onClick={log} />
           </div>
 
         ))

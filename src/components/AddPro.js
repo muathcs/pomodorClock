@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./styles/Projects.css"
-function AddPro({projects, setProjects, projectName, projectTally, setProjectName, setProjectTally}) {
+function AddPro({projects, setProjects, projectName, projectTally, setProjectName, setProjectTally, counter}) {
 
   const [trigger, setTrigger] = useState(false);
 
@@ -22,6 +22,7 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
       ...projects, 
       {text:projectName,
           tally:projectTally,
+          counter:counter,
           id:Math.random()*1000
       }
   ]);

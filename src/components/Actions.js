@@ -1,9 +1,14 @@
 import { clear } from "@testing-library/user-event/dist/clear";
 import { useEffect, useRef } from "react";
+import project from "./Projects"
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setPomodoros}) =>{
+const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setPomodoros, setCounter, counter}) =>{
 
-    // timer = timer.current;
+
+    // setCounter(3);
+    console.log("Project: ", project);
+    
+    // The actual clock
     const setUpClock = (timer) =>{
         if (timer.current > 0) {
             timer.current--;
@@ -30,20 +35,10 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                 }
             }
 
-        const startClock = () =>{
-            // switch (clockType){
-            //     case "pomodor":
-            //         // timer.current = pomodorTimer * 60;
-            //         break;
-            //     case "shortbreak":
-            //         timer.current = shortBreak * 60;
-            //         break;
-            //     case "longbreak":
-            //         timer.current = longBreak * 60;
-            //         break;
+            // Start the clock
 
-            // }
-            
+        const startClock = () =>{
+
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
                 setUpClock(timer)    
@@ -51,10 +46,13 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
         }
 
-        
+        // Stop the clock
+    
         const stopClock = () =>{
             clearInterval(start.current)
         }
+
+        //Reset the clock
 
         const reset = () =>{
             setSeconds("00");

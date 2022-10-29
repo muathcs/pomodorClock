@@ -1,25 +1,8 @@
 import React, { useState } from 'react';
 import "./styles/Projects.css";
-function Projects({pomodoros, project, projects}) {
+function Projects({pomodoros, project, projects, counter}) {
 
 
-    // const [toggleState, setToggleState] = useState(0);
-
-
-    // const setIndex = (index) => {
-    //     setToggleState(index);
-    // }
-
-
-    // const setClass = (index, className) => 
-    //     toggleState === index ? className : '';
-    
-
-
-    // const isClicked = (index) =>{
-    //     // console.log("hello")
-    //     // console.log("toggle-State: ", toggleState, " Index: ", index);
-    // }
 
 
 
@@ -31,7 +14,7 @@ function Projects({pomodoros, project, projects}) {
                 </div>
 
             <div id='tally'>
-                {pomodoros}/{project.tally}
+                {project.counter}/{project.tally}
             </div>
 
         </div>
