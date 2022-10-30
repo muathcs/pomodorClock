@@ -87,14 +87,21 @@ body{
 }
 
 .settings{
-  background-color: #3c6597;
+  background-color: #ffffff;
   border: 2px solid white;
-  width: 450px;
-  height: 250px;
   position: fixed;
-  color: white;
-  /* margin-left: 35%; */
-  right: 1.8em;
+  /* margin-left: 50em; */
+  width: 450px;
+  height: 550px !important;
+  z-index: 1;
+  border: 2px solid black;
+  border-radius: 20px;
+
+}
+
+.settings-container{
+  display: flex;
+  justify-content: center;
 }
 
 .setTime{
@@ -104,6 +111,7 @@ body{
   justify-content: space-between;
 
 }
+
 
 .setTime input{
   width: 10em;

@@ -78,9 +78,10 @@ function App() {
           {/* <Projects pomodoros={pomodoros}/> */}
 
 
-
+          <div className='outer'>
           <ProjectList counter={counter} pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
           <AddPro counter={counter} projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
+          </div>
       </ProjectContext.Provider>
     </div>
   );

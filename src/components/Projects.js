@@ -8,19 +8,14 @@ function Projects({pomodoros, project, projects, counter}) {
 
 
   return (
-    <div>
         <div>
-                <div id='project-name'>
+            <div id='project-name'>
                     {project.text}
-                </div>
+            </div>
 
             <div id='tally'>
                 {project.counter}/{project.tally}
             </div>
-
-        </div>
-
-  
     </div>
   )
 }

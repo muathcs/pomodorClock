@@ -39,8 +39,8 @@ function ProjectList({projects, setProjects, pomodoros, counter}) {
 
 
 
-    <div>
-        <ul>{
+    <div >
+        <ul className=''>{
           
         
         projects.map((project) => (
