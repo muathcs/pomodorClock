@@ -92,7 +92,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
 
     return(
-        <div id="actions">
+        <div className="actions">
             <button id="start" onClick={startClock}>Start</button>
             <button id="stop" onClick={stopClock}>Stop</button>
             <button onClick={reset} id="reset">Reset</button>

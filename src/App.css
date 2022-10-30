@@ -48,7 +48,13 @@ body{
   font-weight: bolder;
 }
 
-#actions button{
+
+.actions{
+  display: flex;
+  justify-content: center;
+}
+
+.actions button{
   
   border: 0.1px solid black;
   padding: 10px 30px;
@@ -57,12 +63,11 @@ body{
 
 }
 
-#actions button:hover{
+.actions button:hover{
   
   border: 0.1px solid black;
   background-image: linear-gradient(rgb(0 0 0/40%) 0 0);;
-  padding: 10px 30px;
-  margin: .5em 2em;
+  /* padding: 10px 30px; */
   cursor: pointer;
 }
 

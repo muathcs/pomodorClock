@@ -75,11 +75,11 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
       </div>
   
   ) : (
-    <div className=''>
+    <div className='project-holder'>
         <div onClick={()=> {
 
           setTrigger(!trigger)
-        }}  className='add-button-proj'>
+        }}  className='add-button-proj '>
             +
         </div>
     </div>
