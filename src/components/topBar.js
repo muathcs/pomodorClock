@@ -14,6 +14,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
 
     
     function pomodor(){
+        setTrigger(false);
         clearInterval(start.current);
         setMinutes(pomodorTimer);
         setSeconds("00");
@@ -24,6 +25,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
     }
 
     function shortBreakSet(){
+        setTrigger(false);
         clearInterval(start.current);
         setMinutes(shortBreak);
         // timer.current = 5 * 60;
@@ -34,6 +36,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
     }
     
     function longBreakSet(){
+        setTrigger(false);
         clearInterval(start.current);
         setMinutes(longBreak);
         // timer.current = 10 * 60;
