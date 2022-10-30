@@ -10,6 +10,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
 
 
     const [trigger, setTrigger] = useState(false);
+    const [ToggleState, setToggleState] = useState(1);
 
     
     function pomodor(){
@@ -46,13 +47,28 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
         setTrigger(true);
     }
 
+    const toggleTab = (index) => {
+        setToggleState(index)
+    }
+
+    const setClass = (index, className) =>{
+        if(ToggleState == index){
+            return className
+        }else{
+            return ""
+        }
+        
+        // ToggleState === index ? className : "null";
+
+    }
+
     return(
         <div>
            <div className="top-div">
-                <button onClick={pomodor}>Pomodor</button>
-                <button onClick={shortBreakSet}>Short Break</button>
-                <button onClick={longBreakSet}>Long Long Break</button>
-                <button onClick={openSettings} >Settings</button>
+                <button onClick={() => {pomodor(); toggleTab(1)}} className={`${setClass(1, "active-top")}`} >Pomodor</button>
+                <button onClick={() => {shortBreakSet(); toggleTab(2)}} className={`${setClass(2, "active-top")}`} >Short Break</button>
+                <button onClick={() => {longBreakSet(); toggleTab(3)}} className={`${setClass(3, "active-top")}`}>Long Long Break</button>
+                <button onClick={() => {openSettings(); toggleTab(4)}} className={`${setClass(4, "active-top")}`}>Settings</button>
            </div>
            <Settings setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}>
             </Settings>
