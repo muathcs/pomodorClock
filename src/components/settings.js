@@ -6,7 +6,7 @@ import startClock from "./Actions"
 import setUpClock from "./Actions"
 import Actions from './Actions'
 
-function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeconds, setMinutes, setTrigger, trigger, setPomodorTimer, setShortBreak, setLongBreak, breakTime, setBreakTime}){
+function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeconds, setMinutes, setTrigger, trigger, setPomodorTimer, setShortBreak, setLongBreak, breakTime, ToggleState}){
 
 
     const [pomodorInput, setPomodorInput] = useState('');
@@ -14,12 +14,25 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
     const [longBreakInput, setLongBreakInput] = useState('');
     const [BreakInput, setBreakInput] = useState('');
 
-
+    console.log("toggle", ToggleState)
     function close(){
 
         // startClock(timer);
         // setUpClock(timer);
         setTrigger(false);
+
+        switch (ToggleState){
+            case 1:
+                setMinutes(pomodorTimer);
+                break;
+            case 2:
+                setMinutes(shortBreak);
+                break;
+            case 3:
+                setMinutes(longBreak);
+                break
+
+        }
     }
 
     function pomodor(e){

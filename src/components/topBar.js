@@ -74,7 +74,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
                 <button onClick={() => {openSettings()}} >Settings</button>
            </div>
            <div className="settings-container">
-           <Settings setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}>
+           <Settings ToggleState={ToggleState} setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}>
             </Settings>
            </div>
         </div>

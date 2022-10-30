@@ -49,9 +49,8 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
 
   return (trigger) ? (
     
-    <div>
+    <div className='project-container'>
 
-    <div className='project-container '>
       <div className='project-set clicked '>
 
                 <button onClick={() => setTrigger(false)} className="close-btn-proj">close</button>
@@ -69,7 +68,6 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
                 <button onClick={addProject}>Add</button>
 
                 </form>
-      </div>
     </div>
      
       </div>
@@ -79,7 +77,7 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
         <div onClick={()=> {
 
           setTrigger(!trigger)
-        }}  className='add-button-proj '>
+        }}  className={`add-button-proj ${trigger ? "add-button-proj-clicked" : ""}`}>
             +
         </div>
     </div>
