@@ -12,7 +12,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
          // get the project context
 
         //  if(project != null) console.log(project);
-         console.log(project ? project : "goodbye");
+        //  console.log(project ? project : "goodbye");
          
      }, [project]) //optionally render again when project is updated);
     
@@ -38,6 +38,8 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     if(clockType == "pomodor" ){
                         
                         project.counter++;
+                        console.log(project)
+                        // setProject(...project, project);
                         setPomodoros((prevPomo) => prevPomo+1);
                     }
                     clearInterval(start.current)

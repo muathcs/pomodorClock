@@ -37,6 +37,8 @@ function App() {
   }
 
   useEffect(() =>{
+    console.log("APPx", project);
+
     getProjects();
     setMinutes(pomodorTimer);
     setSeconds("00");
@@ -46,8 +48,9 @@ function App() {
 
 
   useEffect(() => {
+    console.log("APP", project);
     saveLocalProjects();
-  }, [projects])
+  }, [projects, pomodoros])
 
   const saveLocalProjects = () => {
     localStorage.setItem("projects", JSON.stringify(projects))
