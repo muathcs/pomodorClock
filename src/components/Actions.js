@@ -40,7 +40,6 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                         project.counter++;
                         setPomodoros((prevPomo) => prevPomo+1);
                     }
-                    console.log("sdfjhljadsflhkjs")
                     clearInterval(start.current)
                 }
             }

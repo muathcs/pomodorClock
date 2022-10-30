@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./styles/Projects.css";
+
 function Projects({pomodoros, project, projects, counter}) {
 
 
@@ -9,7 +10,7 @@ function Projects({pomodoros, project, projects, counter}) {
   return (
     <div>
         <div>
-                <div id='project-name' className="divCard" item-color='1' title='Tab 1'>
+                <div id='project-name'>
                     {project.text}
                 </div>
 

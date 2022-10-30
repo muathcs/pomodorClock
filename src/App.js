@@ -37,6 +37,7 @@ function App() {
   }
 
   useEffect(() =>{
+    getProjects();
     setMinutes(pomodorTimer);
     setSeconds("00");
     timer.current = pomodorTimer * 60;
@@ -44,7 +45,22 @@ function App() {
   },[])
 
 
+  useEffect(() => {
+    saveLocalProjects();
+  }, [projects])
 
+  const saveLocalProjects = () => {
+    localStorage.setItem("projects", JSON.stringify(projects))
+  }
+
+  const getProjects = () => {
+
+    if(localStorage.getItem("projects") === null){
+      localStorage.setItem("projects", JSON.stringify([]));
+    }else{
+      setProjects(JSON.parse(localStorage.getItem("projects")))
+    }
+  }
 
 
 
