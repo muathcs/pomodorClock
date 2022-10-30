@@ -1,12 +1,20 @@
 import { clear } from "@testing-library/user-event/dist/clear";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import project from "./Projects"
+import { ProjectContext } from "../Contexts/ProjectContext";
 
 const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setPomodoros, setCounter, counter}) =>{
 
 
-    // setCounter(3);
-    console.log("Project: ", project);
+    const {project, setProject} = useContext(ProjectContext);
+     // use effect to set the project after you get the data
+     useEffect(()=>{
+         // get the project context
+
+        //  if(project != null) console.log(project);
+         console.log(project ? project : "goodbye");
+         
+     }, [project]) //optionally render again when project is updated);
     
     // The actual clock
     const setUpClock = (timer) =>{
@@ -25,9 +33,11 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
                 } else {
                     
-
+                    reset();
+                    
                     if(clockType == "pomodor" ){
-
+                        
+                        project.counter++;
                         setPomodoros((prevPomo) => prevPomo+1);
                     }
                     console.log("sdfjhljadsflhkjs")

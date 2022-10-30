@@ -11,6 +11,7 @@ import Settings from './components/settings';
 import Projects from './components/Projects';
 import AddPro from './components/AddPro';
 import ProjectList from './components/ProjectList';
+import {ProjectContext} from "./Contexts/ProjectContext"
 function App() {
 
   const [minutes, setMinutes] = useState("05");
@@ -26,6 +27,7 @@ function App() {
   const [longBreak, setLongBreak] = useState(10);
   const [pomodoros, setPomodoros] = useState(1);
   const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState();
  
   const timer = useRef(0)
   let start = useRef(0);
@@ -49,16 +51,18 @@ function App() {
   return (
     <div className="App">
       <p>Pomodor Clock</p>
-        <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}/>  
-        <Clock minutes={minutes} seconds={seconds} /> 
-        <Actions counter={counter} setCounter={setCounter} setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
-        {/* <Projects pomodoros={pomodoros}/> */}
-        {/* <Projects pomodoros={pomodoros}/> */}
+      <ProjectContext.Provider value={{project, setProject}}>
+          <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}/>  
+          <Clock minutes={minutes} seconds={seconds} /> 
+          <Actions counter={counter} setCounter={setCounter} setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
+          {/* <Projects pomodoros={pomodoros}/> */}
+          {/* <Projects pomodoros={pomodoros}/> */}
 
 
 
-        <ProjectList counter={counter} pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
-        <AddPro counter={counter} projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
+          <ProjectList counter={counter} pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
+          <AddPro counter={counter} projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
+      </ProjectContext.Provider>
     </div>
   );
 }

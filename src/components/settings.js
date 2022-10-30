@@ -17,8 +17,8 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
 
     function close(){
 
-        startClock(timer);
-        setUpClock(timer);
+        // startClock(timer);
+        // setUpClock(timer);
         setTrigger(false);
     }
 

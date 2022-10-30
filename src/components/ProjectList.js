@@ -1,21 +1,27 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AddPro from './AddPro'
 import Projects from './Projects'
 import "./styles/Projects.css"
+import { ProjectContext } from '../Contexts/ProjectContext'
+import Actions from './Actions'
 
 function ProjectList({projects, setProjects, pomodoros, counter}) {
 
 
-  const log = (id) =>{
-    console.log(id)
+  const log = (id, project) =>{
+    // console.log(id)
   }
 
 
   const [toggleState, setToggleState] = useState(0);
+  const {project, setProject} = useContext(ProjectContext);
 
 
-    const setIndex = (index) => {
-        setToggleState(index);
+    const setIndex = (project) => {
+        setToggleState(project.id);
+        // setProject(project)
+        // console.log(project.id,":", project.counter)
+
     }
 
 
@@ -32,8 +38,13 @@ function ProjectList({projects, setProjects, pomodoros, counter}) {
           
         
         projects.map((project) => (
-          <div onClick={() => setIndex(project.id)} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
+          <div onClick={() => {
+            setProject(project)
+            setIndex(project)}} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
+            {/* {setProject(project)} */}
             <Projects counter={counter} pomodoros={pomodoros} project={project}projects={projects} onClick={log} />
+
+            
           </div>
 
         ))
