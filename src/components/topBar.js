@@ -71,7 +71,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
                 <button onClick={() => {pomodor(); toggleTab(1)}} className={`${setClass(1, "active-top")}`} >Pomodor</button>
                 <button onClick={() => {shortBreakSet(); toggleTab(2)}} className={`${setClass(2, "active-top")}`} >Short Break</button>
                 <button onClick={() => {longBreakSet(); toggleTab(3)}} className={`${setClass(3, "active-top")}`}>Long Long Break</button>
-                <button onClick={() => {openSettings(); toggleTab(4)}} className={`${setClass(4, "active-top")}`}>Settings</button>
+                <button onClick={() => {openSettings()}} >Settings</button>
            </div>
            <Settings setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}>
             </Settings>

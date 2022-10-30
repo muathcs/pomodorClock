@@ -27,6 +27,12 @@ function ProjectList({projects, setProjects, pomodoros, counter}) {
 
     const setClass = (index, className) => 
         toggleState === index ? className : '';
+
+
+
+    const deleteProject = (id) =>{
+      setProjects(projects.filter((project) => project.id != id))
+    }
     
   
   return (
@@ -43,6 +49,7 @@ function ProjectList({projects, setProjects, pomodoros, counter}) {
             setIndex(project)}} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
             {/* {setProject(project)} */}
             <Projects counter={counter} pomodoros={pomodoros} project={project}projects={projects} onClick={log} />
+            <button onClick={() => deleteProject(project.id)} className='delete'>Delete</button>
 
             
           </div>
