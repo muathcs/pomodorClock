@@ -86,7 +86,7 @@ body{
     cursor: pointer;
     border: 1px solid black;
     /* transition-property: width; */
-    transition-duration: 2s;
+    transition-duration: 0.1s;
 
 }
 
@@ -114,8 +114,12 @@ body{
     width: 100%;
     max-width: 480px;
     margin-left: 2em;
+    transition-duration: 0.1s;
+    /* transition-delay: 1s; */
+
 
 }
+
 
 /* outer */
 
