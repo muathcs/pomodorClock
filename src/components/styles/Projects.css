@@ -158,8 +158,8 @@ body{
 .top-div button{
     border: 0.1px solid black;
     padding: 10px 0;
-    width: 160px;
-    /* max-width: 200px; */
+    width: 100%;
+    max-width: 160px;
     /* min-width: 200px; */
     /* max-width: 200px; */
     background-color: tomato;
@@ -193,7 +193,10 @@ body{
 
 @media only screen and (max-width: 500px) {
 
-
+    .top-div button {
+        background-color: red;
+        width: 24.5%;
+    }
     .container{
        
         width: 95%;
