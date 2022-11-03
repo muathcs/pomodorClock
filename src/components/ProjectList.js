@@ -39,7 +39,6 @@ function ProjectList({projects, setProjects, pomodoros, counter}) {
 
 
 
-    <div className='project-holder'>
         <ul className="project-ul">{
           
         
@@ -60,7 +59,6 @@ function ProjectList({projects, setProjects, pomodoros, counter}) {
             }
 
         </ul>
-    </div>
   )
 }
 
