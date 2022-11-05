@@ -104,10 +104,13 @@ body{
 }
 
 .project-set{
-    background-color: aquamarine;
+    background-color: rgb(255, 230, 230);
+    border: 2px solid black;
     border-radius: 5px;
+    padding: 5px;
     width: 100%;
     max-width: 480px;
+    cursor: pointer;
 
     transition-duration: 0.1s;
     /* transition-delay: 1s; */
@@ -191,13 +194,44 @@ body{
 }
 
 
+/* NavBar */
+
+.navBar{
+    margin-top: 0;
+    height: 3em;
+    gap: 1em;
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+    background-color: #1F5156;
+}
+
+
+.navBar li{
+    position: relative;
+    right: 20px;
+}
+
+.navBar li:hover{
+    border-bottom: 1px solid #F5B922;
+}
+
 @media only screen and (max-width: 500px) {
 
+    body{
+        /* font-size: 2px !important; */
+    }
     .top-div button {
-        background-color: red;
+        /* background-color: red; */
         width: 24.5%;
+        font-size: 13px;
     }
     .container{
+        font-size: 13px;
        
         width: 95%;
     }

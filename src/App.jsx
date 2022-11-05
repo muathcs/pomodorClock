@@ -12,6 +12,7 @@ import Projects from './components/Projects';
 import AddPro from './components/AddPro';
 import ProjectList from './components/ProjectList';
 import {ProjectContext} from "./Contexts/ProjectContext"
+import NavBar from './components/NavBar';
 function App() {
 
   const [minutes, setMinutes] = useState("05");
@@ -69,6 +70,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <p>Pomodor Clock</p>
       <ProjectContext.Provider value={{project, setProject}}>
           <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}/>  
