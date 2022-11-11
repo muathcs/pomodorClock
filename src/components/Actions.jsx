@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef } from "react";
 import project from "./Projects"
 import { ProjectContext } from "../Contexts/ProjectContext";
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setPomodoros, setCounter, counter}) =>{
+const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setPomodoros, setCounter, counter, projectName}) =>{
 
 
     const {project, setProject} = useContext(ProjectContext);
@@ -92,11 +92,15 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
 
     return(
+        <>
         <div className="actions">
             <button id="start" onClick={startClock}>Start</button>
             <button id="stop" onClick={stopClock}>Stop</button>
             <button onClick={reset} id="reset">Reset</button>
         </div>
+
+        <p>{projectName}</p>
+        </>
     )
 }
 

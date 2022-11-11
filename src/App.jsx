@@ -75,13 +75,13 @@ function App() {
       <ProjectContext.Provider value={{project, setProject}}>
           <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}/>  
           <Clock minutes={minutes} seconds={seconds} /> 
-          <Actions counter={counter} setCounter={setCounter} setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
+          <Actions projectName={projectName} counter={counter} setCounter={setCounter} setPomodoros={setPomodoros} minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
           {/* <Projects pomodoros={pomodoros}/> */}
           {/* <Projects pomodoros={pomodoros}/> */}
 
 
           <div className='outer'>
-          <ProjectList counter={counter} pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
+          <ProjectList setProjectName={setProjectName} counter={counter} pomodoros={pomodoros} projects={projects} setProjects={setProjects}/>
           <AddPro counter={counter} projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
           </div>
       </ProjectContext.Provider>

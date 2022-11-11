@@ -5,7 +5,7 @@ import "./styles/Projects.css"
 import { ProjectContext } from '../Contexts/ProjectContext'
 import Actions from './Actions'
 
-function ProjectList({projects, setProjects, pomodoros, counter}) {
+function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}) {
 
 
   const log = (id, project) =>{
@@ -44,9 +44,10 @@ function ProjectList({projects, setProjects, pomodoros, counter}) {
         
         projects.map((project) => (
           <div onClick={() => {
+            setProjectName(project.text);
             setProject(project)
             setIndex(project)}} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
-            {/* {setProject(project)} */}
+
             <Projects counter={counter} pomodoros={pomodoros} project={project}projects={projects} onClick={log} />
             <button onClick={() => deleteProject(project.id)} className='delete'>Delete</button>
 

@@ -22,6 +22,7 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
       ...projects, 
       {text:projectName,
           tally:projectTally,
+
           counter:counter,
           id:Math.random()*1000
       }
