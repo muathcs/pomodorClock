@@ -4,10 +4,16 @@ import Projects from './Projects'
 import "./styles/Projects.css"
 import { ProjectContext } from '../Contexts/ProjectContext'
 import Actions from './Actions'
+import { useEffect } from 'react'
 
 function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}) {
 
 
+
+  const projectNameArr = [];
+  projects.map((proj) => projectNameArr.push(proj.text));
+
+  console.log("my ARRay ", projectNameArr)
   const log = (id, project) =>{
     // console.log(id)
   }
@@ -24,6 +30,13 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
 
     }
 
+    useEffect(() => {
+      if(projectNameArr.includes(project.text)){
+        setProjectName(project.text);
+      }else{
+        setProjectName("");
+      }
+    }, [projects])
 
     const setClass = (index, className) => 
         toggleState === index ? className : '';
@@ -31,6 +44,7 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
 
 
     const deleteProject = (id) =>{
+      projectNameArr.pop();
       setProjects(projects.filter((project) => project.id != id))
     }
     
