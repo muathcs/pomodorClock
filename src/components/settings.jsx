@@ -14,7 +14,7 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
     const [longBreakInput, setLongBreakInput] = useState('');
     const [BreakInput, setBreakInput] = useState('');
 
-    console.log("toggle", ToggleState)
+    // console.log("toggle", ToggleState)
     function close(){
 
         // startClock(timer);

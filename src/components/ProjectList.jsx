@@ -10,10 +10,10 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
 
 
 
-  const projectNameArr = [];
-  projects.map((proj) => projectNameArr.push(proj.text));
+  // const projectNameArr = [];
+  // projects.map((proj) => projectNameArr.push(proj.text));
 
-  console.log("my ARRay ", projectNameArr)
+  // console.log("my ARRay ", projectNameArr)
   const log = (id, project) =>{
     // console.log(id)
   }
@@ -30,13 +30,42 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
 
     }
 
-    useEffect(() => {
-      if(projectNameArr.includes(project.text)){
-        setProjectName(project.text);
-      }else{
-        setProjectName("");
-      }
-    }, [projects])
+    // useEffect((project) => {
+    //   // for(let name of projectNameArr){
+    //   //   for(let projName of projects.map((pro) => pro.text)){
+    //   //     if (name == projName){
+    //   //       setProjectName(project.text)
+    //   //     }else{
+    //   //       setProjectName("");
+    //   //     }
+    //   //     }
+    //   //   }
+
+    //   // for(let name of projectNameArr){
+    //     for(let projName of projects.map((pro) => {
+          
+    //       if(projectNameArr.includes(pro.text)){
+    //         // console.log("namee", name)
+    //         setProjectName(pro.text);
+    //         // return;
+    //       }else{
+    //         // console.log("here delete")
+    //         setProjectName("");
+    //       }
+          
+        
+    //     })){}
+
+    //     console.log("wre", project)
+        
+    //   // if(projectNameArr.includes(project.text)){
+    //   //   setProjectName(project.text);
+    //   // }else{
+    //   //   setProjectName("");
+    //   // }
+    //   // console.log("project name: ", projects.map((proj) => proj.text))
+
+    // }, [projects])
 
     const setClass = (index, className) => 
         toggleState === index ? className : '';
@@ -44,7 +73,9 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
 
 
     const deleteProject = (id) =>{
-      projectNameArr.pop();
+      // projectNameArr.pop();
+      setProjectName(...projects, "");
+      // console.log("ehre", project)
       setProjects(projects.filter((project) => project.id != id))
     }
     

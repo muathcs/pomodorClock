@@ -38,7 +38,6 @@ function App() {
   }
 
   useEffect(() =>{
-    console.log("APPx", project);
 
     getProjects();
     setMinutes(pomodorTimer);
@@ -49,7 +48,6 @@ function App() {
 
 
   useEffect(() => {
-    console.log("APP", project);
     saveLocalProjects();
   }, [projects, pomodoros])
 
