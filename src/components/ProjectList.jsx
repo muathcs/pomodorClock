@@ -27,6 +27,7 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
         setToggleState(project.id);
         // setProject(project)
         // console.log(project.id,":", project.counter)
+        //
 
     }
 
