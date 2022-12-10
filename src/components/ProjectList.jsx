@@ -27,7 +27,6 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
         setToggleState(project.id);
         // setProject(project)
         // console.log(project.id,":", project.counter)
-        //
 
     }
 
@@ -94,7 +93,7 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
             setProject(project)
             setIndex(project)}} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
 
-            <Projects counter={counter} pomodoros={pomodoros} project={project}projects={projects} onClick={log} />
+            <Projects counter={counter} project={project}projects={projects} onClick={log} />
             <button onClick={() => deleteProject(project.id)} className='delete'>Delete</button>
 
             

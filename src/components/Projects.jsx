@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./styles/Projects.css";
 
-function Projects({pomodoros, project, projects, counter}) {
+function Projects({project, projects, counter}) {
 
 
 

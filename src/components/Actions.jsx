@@ -3,18 +3,10 @@ import { useContext, useEffect, useRef } from "react";
 import project from "./Projects"
 import { ProjectContext } from "../Contexts/ProjectContext";
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setPomodoros, setCounter, counter, projectName}) =>{
+const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setCounter, counter, projectName}) =>{
 
 
     const {project, setProject} = useContext(ProjectContext);
-     // use effect to set the project after you get the data
-     useEffect(()=>{
-         // get the project context
-
-        //  if(project != null) console.log(project);
-        //  console.log(project ? project : "goodbye");
-         
-     }, [project]) //optionally render again when project is updated);
     
     // The actual clock
     const setUpClock = (timer) =>{
@@ -35,21 +27,19 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     
                     reset();
                     
-                    if(clockType == "pomodor" ){
-                        
+                    // this if statement checks if a project has been clicked, 
+                    // this is to prevent undefined error when incremening the project.counter since there is no project. 
+                    if(clockType == "pomodor" && project != undefined){
                         project.counter++;
-                        console.log(project)
-                        // setProject(...project, project);
-                        setPomodoros((prevPomo) => prevPomo+1);
                     }
-                    clearInterval(start.current)
                 }
             }
 
+            
             // Start the clock
-
         const startClock = () =>{
 
+            //clearInterval before every start, to prevent the clock for speeding up. 
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
                 setUpClock(timer)    
@@ -65,9 +55,11 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
         //Reset the clock
 
+        /*
+        * When the timer ends, this function will be called, it has a switch statement, 
+        * to see which timer just ended, and reset the timer accordingly. 
+        */
         const reset = () =>{
-            setSeconds("00");
-            clearInterval(start.current);
 
             switch (clockType){
                 case "pomodor":

@@ -14,11 +14,11 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
 
     
     function pomodor(){
+        // console.log("here")
         setTrigger(false);
         clearInterval(start.current);
         setMinutes(pomodorTimer);
         setSeconds("00");
-        console.log(pomodorTimer)
         timer.current = pomodorTimer * 60;
         setClockType("pomodor");
 
