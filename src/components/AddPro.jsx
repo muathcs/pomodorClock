@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 import "./styles/Projects.css"
+import { useDispatch, useSelector } from 'react-redux';
+import { flip } from '../redux/trigger';
+
 function AddPro({projects, setProjects, projectName, projectTally, setProjectName, setProjectTally, counter}) {
 
-  const [trigger, setTrigger] = useState(false);
+  const {trigger} = useSelector((state) => state.trigger);
+  console.log("it's me: ", trigger)
+  const dispatch = useDispatch();
+  // const [trigger, setTrigger] = useState(false);
 
 
-  const handleProjectName = (e) =>{
-    setProjectName(e.target.value);
-  }
-  const handlePrjectTally = (e) =>{
-    setProjectTally(e.target.value);
-  }
 
 
   const addProject = (e) =>{
     e.preventDefault();
 
-    setTrigger(!trigger)
-
+    // setTrigger(!trigger)
+    dispatch(trigger());
     setProjects([
       ...projects, 
       {text:projectName,
@@ -28,42 +28,31 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
       }
   ]);
 
-
-
   setProjectName("");
 
-
   }
 
-  const DisplayProj = (e) =>{
-
-    // e.preventDefault();
-
-    return(
-
-      <div>
-        hjsafdhjsafdhjk
-      </div>
-    )
-  }
-
-
+  /*
+    * The trigger boolean is used to check which div to display, the div with the Plus icon to be clicked, or the div with two inputs to add a project and time. 
+    * When the div with the plus is clicked, the trigger is turned to true, and this allows for the div with the input fields to pop up, when the div with the input field
+    * is closed, the tirgger become false, and so the div with the plus icon is displayed. 
+  */
   return (trigger) ? (
     
     <div className='project-container'>
 
       <div className='project-set clicked '>
 
-                <button onClick={() => setTrigger(false)} className="close-btn-proj">close</button>
+                <button onClick={() => dispatch(flip())} className="close-btn-proj">close</button>
 
                 <form className='setTime'>
 
                 <label>Name:
-                    <input value={projectName} onChange={handleProjectName} name="pomodor" id='pomodor-proj' />
+                    <input value={projectName} onChange={e => setProjectName(e.target.value)} name="pomodor" id='pomodor-proj' />
                 </label>
 
                 <label>Time:
-                <input min={0} type="number" onChange={handlePrjectTally} name="shortBreak" id='shortBreak-proj' />
+                <input min={0} type="number" onChange={e => setProjectTally(e.target.value)} name="shortBreak" id='shortBreak-proj' />
                 </label>
 
                 <button onClick={addProject}>Add</button>
@@ -77,7 +66,9 @@ function AddPro({projects, setProjects, projectName, projectTally, setProjectNam
     <div className='project-holder'>
         <div onClick={()=> {
 
-          setTrigger(!trigger)
+          dispatch(flip())
+          // console.log("clicked")
+         
         }}  className={`add-button-proj ${trigger ? "add-button-proj-clicked" : ""}`}>
             +
         </div>

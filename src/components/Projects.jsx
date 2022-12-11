@@ -3,10 +3,6 @@ import "./styles/Projects.css";
 
 function Projects({project, projects, counter}) {
 
-
-
-
-
   return (
         <div>
             <div id='project-name'>

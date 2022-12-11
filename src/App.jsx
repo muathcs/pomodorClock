@@ -13,9 +13,12 @@ import AddPro from './components/AddPro';
 import ProjectList from './components/ProjectList';
 import {ProjectContext} from "./Contexts/ProjectContext"
 import NavBar from './components/NavBar';
+// import counterReducer from "./"
+import { useDispatch, useSelector } from 'react-redux';
 function App() {
 
-  
+  // const {count} = useSelector((state) => state.counter);
+  // const dispatch = useDispatch();
   const [minutes, setMinutes] = useState("10");
 
   const[seconds, setSeconds] = useState("00");

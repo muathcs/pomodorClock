@@ -2,10 +2,14 @@ import { clear } from "@testing-library/user-event/dist/clear";
 import { useContext, useEffect, useRef } from "react";
 import project from "./Projects"
 import { ProjectContext } from "../Contexts/ProjectContext";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setCounter, counter, projectName}) =>{
 
-
+    const {trigger} = useSelector((state) => state.trigger);
+    const dispatch = useDispatch();
+    console.log("here: ", trigger)
     const {project, setProject} = useContext(ProjectContext);
     
     // The actual clock
@@ -80,7 +84,9 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
 
 
-
+    
+    //Actions to start, stop and reset the clock
+    
 
     return(
         <>
@@ -90,7 +96,11 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
             <button onClick={reset} id="reset">Reset</button>
         </div>
 
-        <p>{projectName}</p>
+         {/* Redux state is used to undisplay the project name when picking a name, and display it when the project is set 
+         
+         look at file addPro.jsx to learn more about the trigger variable. 
+         */}
+        <p>{!trigger ? projectName : ""} </p>
         </>
     )
 }
