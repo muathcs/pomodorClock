@@ -60,7 +60,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
         * to see which timer just ended, and reset the timer accordingly. 
         */
         const reset = () =>{
-
+            setSeconds("00");
             switch (clockType){
                 case "pomodor":
                     setMinutes(pomodorTimer);
@@ -74,7 +74,6 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     setMinutes(longBreak);
                     timer = longBreak * 60;
                     break;
-
             }
         }
 
