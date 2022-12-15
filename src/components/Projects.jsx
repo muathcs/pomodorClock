@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import "./styles/Projects.css";
 
 function Projects({project, projects, counter}) {
+
+  const dispatch = useDispatch();
 
   return (
         <div>

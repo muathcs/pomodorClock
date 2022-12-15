@@ -5,10 +5,15 @@ import "./styles/Projects.css"
 import { ProjectContext } from '../Contexts/ProjectContext'
 import Actions from './Actions'
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setName } from '../redux/trigger'
 
-function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}) {
+function ProjectList({projects, setProjects, projectName, pomodoros, counter, setProjectName}) {
 
 
+  // const {projectName} = useSelector((state) => state.projectName);
+  const dispatch = useDispatch();
+  const {trg} = useSelector((state) => state.trigger);
 
   const projectNameArr = [];
   projects.map((proj) => projectNameArr.push(proj.text));
@@ -31,51 +36,20 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
     }
 
     useEffect((project) => {
-      // for(let name of projectNameArr){
-      //   for(let projName of projects.map((pro) => pro.text)){
-      //     if (name == projName){
-      //       setProjectName(project.text)
-      //     }else{
-      //       setProjectName("");
-      //     }
-      //     }
-      //   }
-
-      // for(let name of projectNameArr){
-        for(let projName of projects.map((pro) => {
-          
-          if(projectNameArr.includes(pro.text)){
-            // console.log("namee", name)
-            setProjectName(pro.text);
-            // return;
-          }else{
-            // console.log("here delete")
-            setProjectName("");
-          }
-          
-        
-        })){}
-
-        
-      // if(projectNameArr.includes(project.text)){
-      //   setProjectName(project.text);
-      // }else{
-      //   setProjectName("");
-      // }
-      // console.log("project name: ", projects.map((proj) => proj.text))
+      
+      setProjectName("");
+      // console.log(project)
 
     }, [projects])
 
     const setClass = (index, className) => 
-        toggleState === index ? className : '';
+    toggleState === index ? className : '';
 
 
 
     const deleteProject = (id) =>{
-      // projectNameArr.pop();
-      setProjectName(...projects, "");
-      // console.log("ehre", project)
       setProjects(projects.filter((project) => project.id != id))
+      dispatch(setName("nothing"))
     }
     
   
@@ -90,10 +64,14 @@ function ProjectList({projects, setProjects, pomodoros, counter, setProjectName}
           <div onClick={() => {
             setProjectName(project.text);
             setProject(project)
+            dispatch(setName(project.text))
             setIndex(project)}} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
 
+
             <Projects counter={counter} project={project}projects={projects} onClick={log} />
-            <button onClick={() => deleteProject(project.id)} className='delete'>Delete</button>
+            <button onClick={() => {
+              dispatch(setName("nothing"))
+              deleteProject(project.id)}} className='delete'>Delete</button>
 
             
           </div>

@@ -5,11 +5,12 @@ import { ProjectContext } from "../Contexts/ProjectContext";
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setCounter, counter, projectName}) =>{
+const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setCounter, counter}) =>{
 
+
+    const projectName = useSelector((state) => state.projectName.projectName);
     const {trigger} = useSelector((state) => state.trigger);
     const dispatch = useDispatch();
-    console.log("here: ", trigger)
     const {project, setProject} = useContext(ProjectContext);
     
     // The actual clock

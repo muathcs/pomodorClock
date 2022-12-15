@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./trigger";
+import {counterSlice, projectNameSlice} from "./trigger";
 
 export default configureStore({
     reducer:{
-        trigger: counterReducer
+
+        trigger: counterSlice.reducer,
+        projectName:projectNameSlice.reducer
     }
+        
 })

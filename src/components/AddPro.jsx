@@ -1,34 +1,40 @@
 import React, { useState } from 'react'
 import "./styles/Projects.css"
 import { useDispatch, useSelector } from 'react-redux';
-import { flip } from '../redux/trigger';
+import { flip, setName } from '../redux/trigger';
+import { useEffect } from 'react';
 
-function AddPro({projects, setProjects, projectName, projectTally, setProjectName, setProjectTally, counter}) {
+function AddPro({projects,projectName, setProjects, projectTally, setProjectName, setProjectTally, counter}) {
 
   const {trigger} = useSelector((state) => state.trigger);
-  console.log("it's me: ", trigger)
+  // const {projectName} = useSelector((state) => state.projectName);
   const dispatch = useDispatch();
   // const [trigger, setTrigger] = useState(false);
 
 
+  useEffect(() => {
+  
+    
+    setProjectName("");
 
+  }, [projects])
 
   const addProject = (e) =>{
     e.preventDefault();
 
     // setTrigger(!trigger)
-    dispatch(trigger());
     setProjects([
       ...projects, 
       {text:projectName,
-          tally:projectTally,
-
-          counter:counter,
-          id:Math.random()*1000
+        tally:projectTally,
+        
+        counter:counter,
+        id:Math.random()*1000
       }
-  ]);
-
-  setProjectName("");
+    ]);
+    
+    // setProjectName("");
+    dispatch(flip());
 
   }
 
