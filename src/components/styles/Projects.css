@@ -219,6 +219,15 @@ body{
 .navBar li{
     position: relative;
     right: 20px;
+
+}
+
+.navBar li a{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+
 }
 
 .navBar li:hover{

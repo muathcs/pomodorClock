@@ -15,6 +15,8 @@ import {ProjectContext} from "./Contexts/ProjectContext"
 import NavBar from './components/NavBar';
 // import counterReducer from "./"
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, Route, Routes } from 'react-router-dom';
+import About from './components/About';
 function App() {
 
   // const {count} = useSelector((state) => state.counter);
@@ -72,8 +74,10 @@ function App() {
 
   return (
     <div className="App">
+
       <NavBar />
       <p>Pomodor Clock</p>
+
       <ProjectContext.Provider value={{project, setProject}}>
           <TopBar setMinutes={setMinutes} setSeconds={setSeconds} seconds={setSeconds} timer={timer} start={start} setClockType={setClockType} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak}/>  
           <Clock minutes={minutes} seconds={seconds} /> 
