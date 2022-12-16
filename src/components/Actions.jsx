@@ -3,6 +3,8 @@ import { useContext, useEffect, useRef } from "react";
 import project from "./Projects"
 import { ProjectContext } from "../Contexts/ProjectContext";
 import { useDispatch, useSelector } from 'react-redux';
+import useSound from 'use-sound';
+import clickSound from '../sounds/click.mp3'
 
 
 const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setCounter, counter}) =>{
@@ -11,7 +13,9 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
     const {trigger} = useSelector((state) => state.trigger);
     const dispatch = useDispatch();
     const {project, setProject} = useContext(ProjectContext);
-
+    const [playSound] = useSound(clickSound)
+    const [playSound2] = useSound(clickSound)
+ 
     
     
     useEffect(() =>{
@@ -48,6 +52,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     
                     if(clockType == "pomodor" && project != undefined){
                         // console.log(project)
+                        playSound();
                         project.counter++;
                     }
                 }
