@@ -194,7 +194,11 @@ body{
     cursor: pointer;
 }
 
+/* projectName */
 
+#projectName{
+    height: 1px;
+}
 /* NavBar */
 
 .navBar{

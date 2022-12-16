@@ -70,12 +70,11 @@ function ProjectList({projects, setProjects, projectName, pomodoros, counter, se
         
         projects.map((project) => (
           <div onClick={() => {
-            console.log(project.id)
 
             setProjectName(project.text);
-            setProject(project)
             dispatch(setName(project.text))
             setProjectID(project.id)
+            setProject(project);
             setIndex(project)}} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
 
             <Projects counter={counter} project={project}projects={projects} onClick={log} />

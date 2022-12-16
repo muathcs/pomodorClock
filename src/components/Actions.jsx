@@ -7,15 +7,24 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setCounter, counter}) =>{
 
-
     const projectName = useSelector((state) => state.projectName.projectName);
     const {trigger} = useSelector((state) => state.trigger);
     const dispatch = useDispatch();
     const {project, setProject} = useContext(ProjectContext);
+
     
+    
+    useEffect(() =>{
+        console.log(project)
+        startClock();
+        setProject(project)
+    }, [project])
+
     // The actual clock
     const setUpClock = (timer) =>{
+        startClock();
         if (timer.current > 0) {
+
             timer.current--;
             let minutes = Math.floor(timer.current / 60);
             
@@ -29,12 +38,16 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
             setMinutes(minutes)
 
                 } else {
-                    
+
+
                     reset();
+
                     
                     // this if statement checks if a project has been clicked, 
                     // this is to prevent undefined error when incremening the project.counter since there is no project. 
+                    
                     if(clockType == "pomodor" && project != undefined){
+                        // console.log(project)
                         project.counter++;
                     }
                 }
@@ -44,7 +57,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
             // Start the clock
         const startClock = () =>{
 
-            //clearInterval before every start, to prevent the clock for speeding up. 
+            //clearInterval before every start, to prevent the clock for speeding up.
                 clearInterval(start.current)
                 start.current = setInterval(()=>{
                 setUpClock(timer)    
@@ -95,13 +108,12 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
             <button id="start" onClick={startClock}>Start</button>
             <button id="stop" onClick={stopClock}>Stop</button>
             <button onClick={reset} id="reset">Reset</button>
+        
         </div>
+        
+        <p id="projectName">{!trigger ? projectName : ""} </p>
 
-         {/* Redux state is used to undisplay the project name when picking a name, and display it when the project is set 
-         
-         look at file addPro.jsx to learn more about the trigger variable. 
-         */}
-        <p>{!trigger ? projectName : ""} </p>
+ 
         </>
     )
 }
