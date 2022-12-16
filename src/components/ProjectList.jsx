@@ -14,7 +14,7 @@ function ProjectList({projects, setProjects, projectName, pomodoros, counter, se
   // const {projectName} = useSelector((state) => state.projectName);
   const dispatch = useDispatch();
   const {trg} = useSelector((state) => state.trigger);
-
+  const [projectID, setProjectID]  = useState("");
   const projectNameArr = [];
   projects.map((proj) => projectNameArr.push(proj.text));
 
@@ -23,10 +23,11 @@ function ProjectList({projects, setProjects, projectName, pomodoros, counter, se
     // console.log(id)
   }
 
+ 
+
 
   const [toggleState, setToggleState] = useState(0);
   const {project, setProject} = useContext(ProjectContext);
-
 
     const setIndex = (project) => {
         setToggleState(project.id);
@@ -47,9 +48,16 @@ function ProjectList({projects, setProjects, projectName, pomodoros, counter, se
 
 
 
-    const deleteProject = (id) =>{
-      setProjects(projects.filter((project) => project.id != id))
-      dispatch(setName("nothing"))
+    const deleteProject = (e, project, id) =>{
+      setProjects(projects.filter((proj) => proj.id != project.id))
+
+
+      //this check means if the project is clicked and then deleted, then remove the project Name, but if the project is not clicked, and deleted, then don't mutate the project name. 
+      if(project.id == id)
+        dispatch(setName(""))//this changes the state from redux doesn't change either.
+   
+      
+
     }
     
   
@@ -62,16 +70,18 @@ function ProjectList({projects, setProjects, projectName, pomodoros, counter, se
         
         projects.map((project) => (
           <div onClick={() => {
+            console.log(project.id)
+
             setProjectName(project.text);
             setProject(project)
             dispatch(setName(project.text))
+            setProjectID(project.id)
             setIndex(project)}} className={`container ${setClass(project.id, "activeClass")}`} key={project.id}>
 
-
             <Projects counter={counter} project={project}projects={projects} onClick={log} />
-            <button onClick={() => {
-              dispatch(setName("nothing"))
-              deleteProject(project.id)}} className='delete'>Delete</button>
+            <button onClick={(e) => {
+              e.stopPropagation();
+              deleteProject(e, project, projectID)}} className='delete'>Delete</button>
 
             
           </div>
