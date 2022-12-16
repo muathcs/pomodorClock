@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import App from '../App'
 import About from './About'
+import Home from './Home'
 
 function NavBar() {
   return (
@@ -18,7 +19,7 @@ function NavBar() {
         </ul>
     </nav>
     <Routes>
-        <Route path='/' element={<></>}/>
+        <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route />
       </Routes>

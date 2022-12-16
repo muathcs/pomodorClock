@@ -20,7 +20,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
     
     useEffect(() =>{
         console.log(project)
-        startClock();
+        stopClock();
         setProject(project)
     }, [project])
 
@@ -52,7 +52,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     
                     if(clockType == "pomodor" && project != undefined){
                         // console.log(project)
-                        playSound();
+                        // playSound();
                         project.counter++;
                     }
                 }

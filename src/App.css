@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/wotfard');
+
 body{
   box-sizing:border-box;
   margin: 0;
@@ -6,6 +8,7 @@ body{
 
 .App {
   text-align: center;
+  font-family: "wotfard"
 }
 
 .App-logo {
