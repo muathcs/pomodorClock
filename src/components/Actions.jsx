@@ -52,7 +52,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     
                     if(clockType == "pomodor" && project != undefined){
                         // console.log(project)
-                        // playSound();
+                        playSound();
                         project.counter++;
                     }
                 }
