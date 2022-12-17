@@ -21,7 +21,8 @@ function NavBar() {
     <Routes>
         <Route path='/pomodorClock' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
-        <Route path="*" element={<Home/>}/>
+        <Route path="/*" element={<Home/>}/>
+        <Route path="/chips" element={<Home/>}/>
         <Route />
       </Routes>
     
