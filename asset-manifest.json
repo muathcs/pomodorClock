@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pomodorClock/static/css/main.f4126b48.css",
+    "main.js": "/pomodorClock/static/js/main.7c9b0f92.js",
+    "static/js/845.d1c80dca.chunk.js": "/pomodorClock/static/js/845.d1c80dca.chunk.js",
+    "static/media/click.mp3": "/pomodorClock/static/media/click.8a763dc94dd8642a3eed.mp3",
+    "index.html": "/pomodorClock/index.html",
+    "main.f4126b48.css.map": "/pomodorClock/static/css/main.f4126b48.css.map",
+    "main.7c9b0f92.js.map": "/pomodorClock/static/js/main.7c9b0f92.js.map",
+    "845.d1c80dca.chunk.js.map": "/pomodorClock/static/js/845.d1c80dca.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f4126b48.css",
+    "static/js/main.7c9b0f92.js"
+  ]
+}
