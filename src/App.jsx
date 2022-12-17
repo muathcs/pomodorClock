@@ -17,6 +17,7 @@ import NavBar from './components/NavBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route, Routes } from 'react-router-dom';
 import About from './components/About';
+import Home from './components/Home';
 function App() {
 
 
@@ -24,6 +25,7 @@ function App() {
     <div className="App">
 
       <NavBar />
+      <Home />
 
       
     </div>
