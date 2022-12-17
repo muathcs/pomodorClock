@@ -11,7 +11,7 @@ function NavBar() {
 
         <ul className='navBar'>
             <li>
-                <Link to="/">Home</Link>
+                <Link to="/pomodorClock">Home</Link>
             </li>
             <li>
                 <Link to="/about">About</Link>
@@ -19,7 +19,7 @@ function NavBar() {
         </ul>
     </nav>
     <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/pomodorClock' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route />
       </Routes>
