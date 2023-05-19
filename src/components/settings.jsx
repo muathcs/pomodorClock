@@ -110,23 +110,23 @@ function Settings({timer, pomodorTimer, shortBreak, longBreak, children, setSeco
     // }
 
     return(trigger) ? (
-        <div className="settings">
-            <div className='inner-settings'>
-                <button onClick={() => close()} className="close-btn">close</button>
+        <div className="settings bg-white border-2 w-[400px] h-[350px] z-10 border-black rounded-[20px] fixed">
+            <div className='inner-settings '>
+                <button onClick={() => close()} className="close-btn border-2 rounded-md px-4 py-1 bg-green-300 hover:bg-green-400">close</button>
                 {children}
 
-                <form className='setTime'>
+                <form className='setTime w-full flex flex-row mt-[1em] gap-2 '>
 
-                <label>Pomodor:
-                    <input value={value} onChange={(e) => dispatch({type: "pomodoro", e})} min="0" type="number" name="pomodor" id='pomodor' />
+                <label className=' w-[33%]'>Pomodor:
+                    <input className='border-2 border-black w-full p-0 input rounded-lg text-center ' value={value} onChange={(e) => dispatch({type: "pomodoro", e})} min="0" type="number" name="pomodor" id='pomodor' />
                 </label>
 
-                <label>Short-Break:
-                <input type="number" value={value} onChange={(e) => {dispatch({type: "shortBreak", e})}} name="shortBreak" id='shortBreak' />
+                <label className=' w-[33%]'>Short-Break:
+                <input type="number" className='border-2 border-black w-full rounded-lg' value={value} onChange={(e) => {dispatch({type: "shortBreak", e})}} name="shortBreak" id='shortBreak' />
                 </label>
 
-                <label>Long-Break:
-                    <input type="number" value={value} onChange={(e) => {dispatch({type: "longBreak", e})}} name="longBreak" id='longBreak' />
+                <label className=' w-[33%]' >Long-Break:
+                    <input type="number" className='border-2 border-black w-full rounded-lg' value={value} onChange={(e) => {dispatch({type: "longBreak", e})}} name="longBreak" id='longBreak' />
                 </label>
                 </form>
             </div>

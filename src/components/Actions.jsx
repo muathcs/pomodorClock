@@ -109,14 +109,14 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
 
     return(
         <>
-        <div className="actions">
-            <button id="start" onClick={startClock}>Start</button>
-            <button id="stop" onClick={stopClock}>Stop</button>
-            <button onClick={reset} id="reset">Reset</button>
+        <div className="actions select-none">
+            <button id="start" className=" bg-green-500 rounded-[5px] text-white text-[20px] hover:bg-gradient border-[0.1px] border-black py-[8px] px-[24px] m-[0.5em] cursor-pointer" onClick={startClock}>Start</button>
+            <button id="stop" className=" bg-red-600 rounded-[5px] text-white text-[20px] hover:bg-gradient border-[0.1px] border-black py-[8px] px-[24px] m-[0.5em] cursor-pointer" onClick={stopClock}>Stop</button>
+            <button className=" bg-gray-100 rounded-[5px] text-white text-[20px] hover:bg-gradient border-[0.1px] border-black py-[8px] px-[24px] m-[0.5em] cursor-pointer" onClick={reset} id="reset">Reset</button>
         
         </div>
         
-        <p id="projectName">{!trigger ? projectName : ""} </p>
+        <p className="h-[0px]"> {!trigger ? projectName : ""} </p>
 
  
         </>

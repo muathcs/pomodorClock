@@ -71,7 +71,7 @@ const Home = () => {
           <Actions projectName={projectName} counter={counter} setCounter={setCounter}  minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} timer={timer} start={start} setClockType={setClockType} clockType={clockType} setPomodorTimer={setPomodorTimer} setPhortBreak={setShortBreak} setPongBreak={setLongBreak}  pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} />
 
 
-          <div className='outer'>
+          <div className='outer flex gap[5px] flex-col justify-center items-center'>
           <ProjectList setProjectName={setProjectName} counter={counter} projects={projects} setProjects={setProjects}/>
           <AddPro counter={counter} projects={projects} setProjects={setProjects} projectTally={projectTally} projectName={projectName} setProjectTally={setProjectTally} setProjectName={setProjectName}/>
           </div>
