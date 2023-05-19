@@ -73,7 +73,7 @@ const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTime
                 <button onClick={() => {pomodor(); toggleTab(1)}} className={ButtonStyle + `${setClass(1, " selected")}`} >Pomodor</button>
                 <button onClick={() => {shortBreakSet(); toggleTab(2)}} className={ButtonStyle + `${setClass(2, " selected")}`} >Short Break</button>
                 <button onClick={() => {longBreakSet(); toggleTab(3)}} className={ButtonStyle + `${setClass(3, " selected")}`}>Long Long Break</button>
-                <button onClick={() => {openSettings(); toggleTab(4)}} className={ButtonStyle + `${setClass(4, " selected")}`} >Settings</button>
+                <button onClick={() => {openSettings(); }} className={ButtonStyle } >Settings</button>
            </div>
            <div className="flex justify-center ">
            <Settings ToggleState={ToggleState} setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}>

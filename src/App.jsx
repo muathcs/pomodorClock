@@ -22,9 +22,10 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App h-full border-2 border-black bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-200 via-red-500 to-fuchsia-500">
 
       <NavBar />
+      <About/>
       
     </div>
   );

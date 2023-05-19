@@ -65,11 +65,13 @@ body{
     box-sizing:border-box;
     margin: 0;
     padding: 0;
-    height: 120vh;
+    height: 100vh;
     font-family: "wotfard";
 }
 
-
+#root{
+    height: 100%;
+}
 /* add project */
 
   .activeClass{

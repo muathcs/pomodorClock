@@ -11,16 +11,17 @@ function NavBar() {
   <header>
      <nav
         className="
+        
           flex flex-wrap
           items-center
           justify-between
           w-[]
           py-4
-          md:py-0
+          md:py-2
           px-4
           text-lg text-gray-700
           bg-white
-          border
+          
           mb-10
           shadow-md
         "
@@ -42,10 +43,7 @@ function NavBar() {
        
           
             <li>
-              <Link className="md:p-4 py-2 block hover:text-purple-400" href="/about"
-                >About</Link>
-            </li>
-            <li>
+
               <Link
               className='md:p-4 py-2 block hover:text-purple-400 text-purple-500'
               to="/pomodorClock"
@@ -53,7 +51,10 @@ function NavBar() {
                 Home
               
               </Link>
-             
+                </li>
+            <li>
+              <Link className="md:p-4 py-2 block hover:text-purple-400" to="/about"
+                >About</Link>
             </li>
           </ul>
         </div>
