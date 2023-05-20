@@ -76,7 +76,7 @@ function AddPro({projects,projectName, setProjects, projectTally, setProjectName
           dispatch(flip())
           // console.log("clicked")
          
-        }}  className={` w-full max-w-[480px] h-[66px] bg-pink-50 rounded-[5px] flex items-center justify-center text-[66px] cursor-pointer border-[1px] border-black hover:bg-pink-100 hover:text-white hover:h-full transition duration-[0.1s]  ${trigger ? "add-button-proj-clicked" : ""}`}>
+        }}  className={` w-full max-w-[480px] h-[80px] bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-200 via-red-500 to-fuchsia-500 hover:bg-gradient-to-r hover:from-orange-400 hover:to-rose-400 hover:border-white rounded-[5px] flex items-center justify-center text-[66px] cursor-pointer border-[2px] border-dotted border-black hover:bg-pink-100 hover:text-white transition duration-[0.1s]   ${trigger ? "add-button-proj-clicked" : ""}`}>
             +
         </div>
     </div>

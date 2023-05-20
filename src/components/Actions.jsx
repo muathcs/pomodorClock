@@ -112,7 +112,7 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
         <div className="actions select-none">
             <button id="start" className=" bg-green-500 rounded-[5px] text-white text-[20px] hover:bg-gradient border-[0.1px] border-black py-[8px] px-[24px] m-[0.5em] cursor-pointer" onClick={startClock}>Start</button>
             <button id="stop" className=" bg-red-600 rounded-[5px] text-white text-[20px] hover:bg-gradient border-[0.1px] border-black py-[8px] px-[24px] m-[0.5em] cursor-pointer" onClick={stopClock}>Stop</button>
-            <button className=" bg-gray-100 rounded-[5px] text-white text-[20px] hover:bg-gradient border-[0.1px] border-black py-[8px] px-[24px] m-[0.5em] cursor-pointer" onClick={reset} id="reset">Reset</button>
+            <button className=" bg-gray-300 rounded-[5px] text-white text-[20px] hover:bg-gradient border-[0.1px] border-black py-[8px] px-[24px] m-[0.5em] cursor-pointer" onClick={reset} id="reset">Reset</button>
         
         </div>
         

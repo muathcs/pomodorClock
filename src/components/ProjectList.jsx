@@ -80,7 +80,7 @@ function ProjectList({projects, setProjects, projectName, pomodoros, counter, se
 
 
             className={`
-            w-full max-w-[480px] h-[66px] ml-[0.1em] mb-[0.3em] rounded-[5px] relative flex items-center cursor-pointer border-l-[5px] border-transparent hover:border-l-[5px] hover:border-[#838383] bg-[#fad7d7]
+            w-full max-w-[480px] h-[66px] ml-[0.1em] mb-[0.3em] rounded-[5px] relative flex items-center cursor-pointer border-l-[5px] border-transparent hover:border-l-[5px] hover:border-[#838383] bg-gray-200
             
             
             container ${containerStyle} ${setClass(project.id, "activeClass")}`} key={project.id}>
