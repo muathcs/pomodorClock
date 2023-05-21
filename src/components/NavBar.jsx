@@ -11,19 +11,7 @@ function NavBar() {
   <header>
      <nav
         className="
-        
-          flex flex-wrap
-          items-center
-          justify-between
-          w-[]
-          py-4
-          md:py-2
-          px-4
-          text-lg text-gray-700
-          bg-white
-          
-          mb-10
-          shadow-md
+          flex flex-wrap items-center justify-between py-4 md:py-2 px-4 text-lg text-gray-700 bg-white mb-10 shadow-md
         "
       >
        <div>
@@ -33,23 +21,14 @@ function NavBar() {
        
        <div className="hidden w-full md:flex md:items-center md:w-auto" id="menu">
           <ul
-            className="
-              pt-4
-              text-base text-gray-700
-              md:flex
-              md:justify-between 
-              md:pt-0"
+            className="pt-4 text-base text-gray-700 md:flex md:justify-between md:pt-0"
           >
-       
-          
             <li>
-
               <Link
               className='md:p-4 py-2 block hover:text-purple-400 text-purple-500'
               to="/pomodorClock"
               >
                 Home
-              
               </Link>
                 </li>
             <li>
@@ -61,11 +40,6 @@ function NavBar() {
     </nav>
   </header>
   
-  
-  
-
-
-
     <Routes>
         <Route path='/pomodorClock' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>

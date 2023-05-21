@@ -5,78 +5,74 @@ import Settings from "./settings";
 
 import startClock from "./settings"
 import check from "./settings"
+import { clear } from "@testing-library/user-event/dist/clear";
+import { useDispatch, useSelector } from "react-redux";
+import { setMinutesR, setSecondsR } from "../redux/timer";
 
-const TopBar = ({setMinutes, timer, setSeconds, start, setClockType, pomodorTimer, shortBreak, longBreak, setPomodorTimer, setShortBreak, setLongBreak}) => {
+const TopBar = ({timer, start, setClockType}) => {
 
 
     const [trigger, setTrigger] = useState(false);
     const [ToggleState, setToggleState] = useState(1);
+    const dispatch = useDispatch();
 
-    
-    function pomodor(){
-        // console.log("here")
+    const {pomodorTimer, longBreak, shortBreak, seconds, minutes } = useSelector((state) => state.timer);
+
+
+    const tabs = [
+        { label: "Pomodor", minutes: pomodorTimer, clockType: "pomodor", index: 1 },
+        { label: "Short Break", minutes: shortBreak, clockType: "shortbreak", index: 2 },
+        { label: "Long Break", minutes: longBreak, clockType: "longbreak", index: 3 },
+      ];
+
+
+     // Assigns the appropriate information to match the clicked clock type.  
+    function setTimeAndStart(minutes, clockType){
+        console.log("MINATES: ", minutes)
         setTrigger(false);
         clearInterval(start.current);
-        setMinutes(pomodorTimer);
-        setSeconds("00");
-        timer.current = pomodorTimer * 60;
-        setClockType("pomodor");
+        dispatch(setSecondsR("00"));
 
-    }
-
-    function shortBreakSet(){
-        setTrigger(false);
-        clearInterval(start.current);
-        setMinutes(shortBreak);
-        // timer.current = 5 * 60;
-        timer.current = shortBreak * 60;
-        setSeconds("00");
-        setClockType("shortbreak");
-
-    }
-    
-    function longBreakSet(){
-        setTrigger(false);
-        clearInterval(start.current);
-        setMinutes(longBreak);
-        // timer.current = 10 * 60;
-        timer.current = longBreak * 60;
-        setSeconds("00");
-        setClockType("longbreak");
-    }
-
-
-    function openSettings(){
-        setTrigger(true);
-    }
-
-    const toggleTab = (index) => {
-        setToggleState(index)
-    }
-
-    const setClass = (index, className) =>{
-        if(ToggleState == index){
-            return className
-        }else{
-            return ""
+        if(typeof minutes !== "undefined"){
+            console.log("herexxx")
+            dispatch(setMinutesR(minutes));
+            timer.current = minutes * 60;
         }
-        
-        // ToggleState === index ? className : "null";
+        setClockType(clockType)
+
 
     }
 
-    const ButtonStyle = "px-0 py-[10px] w-full max-w-[160px] bg-[#ff6347] hover:bg-[#dc5c45] cursor-pointer border-[0.1px] border-black"
+    // adds a class to the clicked Clock type. 
+    const setClass = (index, className) =>{
+        return ToggleState == index ? className : ""
+
+    }
+
+    const ButtonStyle = "px-0 py-[10px] w-full max-w-[160px] bg-[#ff6347] hover:bg-[#dc5c45] cursor-pointer border-[0.1px] border-black "
 
     return(
         <div>
            <div className="top-sdiv flex justify-center">
-                <button onClick={() => {pomodor(); toggleTab(1)}} className={ButtonStyle + `${setClass(1, " selected")}`} >Pomodor</button>
-                <button onClick={() => {shortBreakSet(); toggleTab(2)}} className={ButtonStyle + `${setClass(2, " selected")}`} >Short Break</button>
-                <button onClick={() => {longBreakSet(); toggleTab(3)}} className={ButtonStyle + `${setClass(3, " selected")}`}>Long Long Break</button>
-                <button onClick={() => {openSettings(); }} className={ButtonStyle } >Settings</button>
+            {tabs.map((tab) => (
+                <button 
+                key={tab.index}
+                onClick={()=> {
+                    setTimeAndStart(tab.minutes, tab.clockType);
+                    setToggleState(tab.index)
+
+                }}
+                    className={ButtonStyle + setClass(tab.index, " selected")}
+                >
+                    {tab.label}
+                </button>
+            ))}
+                <button onClick={() => {
+                    
+                    setTrigger(true); }} className={ButtonStyle } >Settings</button>
            </div>
            <div className="flex justify-center ">
-           <Settings ToggleState={ToggleState} setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} pomodorTimer={pomodorTimer} shortBreak={shortBreak} longBreak={longBreak} setMinutes={setMinutes} setSeconds={setSeconds} setPomodorTimer={setPomodorTimer} setShortBreak={setShortBreak} setLongBreak={setLongBreak}>
+           <Settings ToggleState={ToggleState} setClockType={setClockType} trigger={trigger} setTrigger={setTrigger} timer={timer} >
             </Settings>
            </div>
         </div>

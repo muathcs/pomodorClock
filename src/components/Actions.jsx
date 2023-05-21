@@ -5,21 +5,27 @@ import { ProjectContext } from "../Contexts/ProjectContext";
 import { useDispatch, useSelector } from 'react-redux';
 import useSound from 'use-sound';
 import clickSound from '../sounds/click.mp3'
+import { setMinutesR, setSecondsR } from "../redux/timer";
 
 
-const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockType, pomodorTimer, shortBreak, longBreak, setCounter, counter}) =>{
+const Actions = ({timer, start, clockType,}) =>{
 
     const projectName = useSelector((state) => state.projectName.projectName);
     const {trigger} = useSelector((state) => state.trigger);
     const dispatch = useDispatch();
     const {project, setProject} = useContext(ProjectContext);
     const [playSound] = useSound(clickSound)
-    const [playSound2] = useSound(clickSound)
+
+
+    // Selectors
+
+    const {pomodorTimer, longBreak, shortBreak, seconds, minutes } = useSelector((state) => state.timer);
+
+
  
     
     
     useEffect(() =>{
-        console.log(project)
         stopClock();
         setProject(project)
     }, [project])
@@ -38,8 +44,9 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
             localStorage.setItem("time", `${minutes}:${seconds}`);
             let newArr = localStorage.getItem("time");
             
-            setSeconds(seconds)
-            setMinutes(minutes)
+            dispatch(setMinutesR(minutes))
+            dispatch(setSecondsR(seconds))
+            
 
                 } else {
 
@@ -51,7 +58,6 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
                     // this is to prevent undefined error when incremening the project.counter since there is no project. 
                     
                     if(clockType == "pomodor" && project != undefined){
-                        // console.log(project)
                         playSound();
                         project.counter++;
                     }
@@ -83,18 +89,20 @@ const Actions = ({seconds, minutes, setMinutes, setSeconds, timer, start, clockT
         * to see which timer just ended, and reset the timer accordingly. 
         */
         const reset = () =>{
-            setSeconds("00");
+            // setSeconds("00");
+            dispatch(setSecondsR("00"))
             switch (clockType){
                 case "pomodor":
-                    setMinutes(pomodorTimer);
+                    dispatch(setMinutesR(pomodorTimer))
+
                     timer.current = pomodorTimer * 60;
                     break;
                 case "shortbreak":
-                    setMinutes(shortBreak);
+                    dispatch(setMinutesR(shortBreak))
                     timer.current = shortBreak * 60;
                     break;
                 case "longbreak":
-                    setMinutes(longBreak);
+                    dispatch(setMinutesR(longBreak))
                     timer = longBreak * 60;
                     break;
             }

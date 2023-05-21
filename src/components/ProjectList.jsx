@@ -6,95 +6,107 @@ import Actions from './Actions'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setName } from '../redux/trigger'
+import { addNewProject } from '../redux/projectsSlicer'
 
-function ProjectList({projects, setProjects, projectName, pomodoros, counter, setProjectName}) {
+function ProjectList({projects, setProjects}) {
 
-
-  // const {projectName} = useSelector((state) => state.projectName);
   const dispatch = useDispatch();
-  const {trg} = useSelector((state) => state.trigger);
-  const [projectID, setProjectID]  = useState("");
-  const projectNameArr = [];
-  projects.map((proj) => projectNameArr.push(proj.text));
 
-  // console.log("my ARRay ", projectNameArr)
-  const log = (id, project) =>{
-    // console.log(id)
-  }
-
- 
+  // 
+  const projectList = useSelector((state) => state.projectList);
 
 
-  const [toggleState, setToggleState] = useState(0);
-  const {project, setProject} = useContext(ProjectContext);
+  //This useState toggles if a project is clicked or not. 
+  const [clickedProjectID, setClickedProjectID] = useState(0);
 
-    const setIndex = (project) => {
-        setToggleState(project.id);
-        // setProject(project)
-        // console.log(project.id,":", project.counter)
 
+    // This function is saying if the toggleStateId(which we set every time we click on one of the projects) is equal to the index(index is the project id), then add the active class, which is a border
+    // that indicates this div has been clicked. 
+    const setClass = (index, className) => {
+      return clickedProjectID === index ? "activeClass" : '';
     }
 
-    useEffect((project) => {
+    // deletes a project by filtering in all the project.id that don't match the clicked project id, 
+    //and dropping the project that does match the project id. The project id 
+    // is known from the paramaters of the div, and each delete button has access to the project it's trying to delete. 
+    const deleteProject = (project) =>{
+      // const newProjectList = [...projectList];
       
-      setProjectName("");
-      // console.log(project)
-
-    }, [projects])
-
-    const setClass = (index, className) => 
-    toggleState === index ? className : '';
-
-
-
-    const deleteProject = (e, project, id) =>{
-      setProjects(projects.filter((proj) => proj.id != project.id))
-
-
-      //this check means if the project is clicked and then deleted, then remove the project Name, but if the project is not clicked, and deleted, then don't mutate the project name. 
-      if(project.id == id)
-        dispatch(setName(""))//this changes the state from redux doesn't change either.
-   
       
+      console.log("PROJECT: ", projectList)
+      // console.log("PROJECT ID: ", project.id)
+      const updatedProjectList = projectList.filter((proj) => proj.id != project.id);
+      dispatch(addNewProject(updatedProjectList));
+
+      console.log("Updated: ", updatedProjectList);
+      // setProjects(projects.filter((proj) => proj.id != project.id))
+    }
+
+    function selectedProject(e, clickedID){
+      // setClick this is able 
+
+      let newProjectList = [...projectList];
+
+      // console.log("XXX", newProjectList[0].id)
+
+      if(!projectList){
+        return;
+      }
+
+      newProjectList = projectList.map((project) => {
+        if (project.id === clickedID) {
+          return { ...project, selected: true };
+        }
+        return { ...project, selected: false };
+
+      });
+
+        // console.log("LIST: ", project)
+        // if(project.id == clickedID ){
+        //   return {...project, selected:true}
+          
+        // } 
+
+      // })
+
+      dispatch(addNewProject(newProjectList))
+      console.log(newProjectList)
 
     }
-    const containerStyle =  " "
     
   
   return (
+        <ul className="project-ul w-full flex flex-col justify-center items-center pl-0 ">{
 
 
+          projectList.map((project) => (
+            <div onClick={(e) => {
+              console.log("PROJ-ID: ", project.id)
+              setClickedProjectID(project.id);
+              selectedProject(e, project.id)
+              
+            }}
 
-        <ul className="project-ul w-full flex flex-col justify-center items-center pl-0">{
-          
+            className={` w-full max-w-[480px] h-[66px] ml-[0.1em] mb-[0.3em] rounded-[5px] 
+                        relative flex items-center cursor-pointer border-l-[5px] border-l-transparent  
+                        hover:border-l-[5px] hover:border-[#838383] bg-[#ff6347] hover:bg-gradient-to-r hover:from-orange-200 hover:to-rose-400
+                        ${project.selected == true ? " activeClass" : null}
+                                                `
+                      
+                      } 
+                        
+                        key={project.id}
+                        
+                        >
+
+                          <Projects project={project} />
         
-        projects.map((project) => (
-          <div onClick={() => {
-
-            setProjectName(project.text);
-            dispatch(setName(project.text))
-            setProjectID(project.id)
-            setProject(project);
-            setIndex(project)}}
-
-
-
-            className={`
-            w-full max-w-[480px] h-[66px] ml-[0.1em] mb-[0.3em] rounded-[5px] relative flex items-center cursor-pointer border-l-[5px] border-transparent hover:border-l-[5px] hover:border-[#838383] bg-gray-200
-            
-            
-            container ${containerStyle} ${setClass(project.id, "activeClass")}`} key={project.id}>
-
-            <Projects counter={counter} project={project}projects={projects} onClick={log} />
             <button onClick={(e) => {
               e.stopPropagation();
-              deleteProject(e, project, projectID)}} className='h-full  bg-red-600 hover:bg-gradient text-white rounded-[5px] border-none py-[2px] px-[1px] absolute right-0 top-0 cursor-pointer'>Delete</button>
-
-            
+              deleteProject(project)}} className='h-full  bg-gray-200 text-black border border-black hover:bg-gradient  rounded-[5px] py-[2px] px-[1px] absolute right-0 top-0 cursor-pointer pointer '>Delete</button>
           </div>
 
         ))
-        
 
             }
 
@@ -103,3 +115,4 @@ function ProjectList({projects, setProjects, projectName, pomodoros, counter, se
 }
 
 export default ProjectList
+
