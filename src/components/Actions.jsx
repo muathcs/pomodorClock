@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useSound from 'use-sound';
 import clickSound from '../sounds/click.mp3'
 import { setMinutesR, setSecondsR } from "../redux/timer";
+import { addNewProject } from "../redux/projectsSlicer";
 
 
 const Actions = ({timer, start, clockType,}) =>{
@@ -20,7 +21,13 @@ const Actions = ({timer, start, clockType,}) =>{
     // Selectors
 
     const {pomodorTimer, longBreak, shortBreak, seconds, minutes } = useSelector((state) => state.timer);
+    const projectList = useSelector(state => state.projectList);
 
+    const activeProject = projectList.map(project => {
+        if(project.selected == true){
+            return project
+        }
+    })
 
  
     
@@ -57,9 +64,25 @@ const Actions = ({timer, start, clockType,}) =>{
                     // this if statement checks if a project has been clicked, 
                     // this is to prevent undefined error when incremening the project.counter since there is no project. 
                     
-                    if(clockType == "pomodor" && project != undefined){
+                    if(clockType == "pomodor"){
+                        let newProjectList = [...projectList];
+
+                
+                        newProjectList = projectList.map((project) => {
+                          if (project.selected) {
+                            console.log(project.tally)
+                            return { ...project, tally:project.tally + 1  };
+                          }
+                          return { ...project};
+                  
+                        });
+
+                        dispatch(addNewProject(newProjectList))
+
+
                         playSound();
-                        project.counter++;
+                        console.log("We're here: ", )
+                        // project.counter++;
                     }
                 }
             }

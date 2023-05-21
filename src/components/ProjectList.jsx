@@ -16,15 +16,6 @@ function ProjectList({projects, setProjects}) {
   const projectList = useSelector((state) => state.projectList);
 
 
-  //This useState toggles if a project is clicked or not. 
-  const [clickedProjectID, setClickedProjectID] = useState(0);
-
-
-    // This function is saying if the toggleStateId(which we set every time we click on one of the projects) is equal to the index(index is the project id), then add the active class, which is a border
-    // that indicates this div has been clicked. 
-    const setClass = (index, className) => {
-      return clickedProjectID === index ? "activeClass" : '';
-    }
 
     // deletes a project by filtering in all the project.id that don't match the clicked project id, 
     //and dropping the project that does match the project id. The project id 
@@ -61,16 +52,9 @@ function ProjectList({projects, setProjects}) {
 
       });
 
-        // console.log("LIST: ", project)
-        // if(project.id == clickedID ){
-        //   return {...project, selected:true}
-          
-        // } 
-
-      // })
+    
 
       dispatch(addNewProject(newProjectList))
-      console.log(newProjectList)
 
     }
     
@@ -82,7 +66,6 @@ function ProjectList({projects, setProjects}) {
           projectList.map((project) => (
             <div onClick={(e) => {
               console.log("PROJ-ID: ", project.id)
-              setClickedProjectID(project.id);
               selectedProject(e, project.id)
               
             }}
