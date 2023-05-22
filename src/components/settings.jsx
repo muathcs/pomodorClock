@@ -7,40 +7,12 @@ import startClock from "./Actions"
 import setUpClock from "./Actions"
 import Actions from './Actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLongBreakR, setMinutesR, setPomodorTimerR, setShortBreakR } from '../redux/timer'
+import { setLongBreakR, setMinutesR, setPomodorTimerR, setSecondsR, setShortBreakR } from '../redux/timer'
 
 let value;
-// function reducer(state, action, e){
-//     switch(action.type){
-//         case 'pomodoro':
-//             state.setPomodorTimer(action.e.target.value);
-//             state.timer.current = action.e.target.value * 60;
-//             state.setPomodorTimer(action.e.target.value);
-//             state.pomodorTimer = action.e.target.value;
-//             state.setSeconds("00");
-//             return state;
 
-//         case 'shortBreak':
-//             state.setShortBreak(action.e.target.value);
-//             state.timer.current = action.e.target.value * 60;
-//             state.setShortBreak(action.e.target.value);
-//             state.shortBreak = action.e.target.value;
-//             state.setSeconds("00");
-//             return state;
 
-//         case 'longBreak':
-//             state.setLongBreak(action.e.target.value);
-//             state.timer.current = action.e.target.value * 60;
-//             state.setLongBreak(action.e.target.value);
-//             state.shortBreak = action.e.target.value;
-//             state.setSeconds("00");
-//             return state;
-
-//     }
-
-// }
-
-function Settings({setTrigger, trigger}){
+function Settings({setTrigger, trigger, timer}){
     
     
     const { pomodorTimer, shortBreak, longBreak } = useSelector((state) => state.timer);
@@ -50,24 +22,27 @@ function Settings({setTrigger, trigger}){
 
 
     function settingSetter(clockType, e){
+        dispatch(setSecondsR("00"));
+        const input = e.target.value;
+        timer.current = input * 60;
+
         switch(clockType){
             case "pomodoro":
-                dispatch(setPomodorTimerR(e.target.value));
+                dispatch(setPomodorTimerR(input));
                 dispatch(setMinutesR(pomodorTimer))
+                
 
                 break;
 
             case "shortBreak":
-                    dispatch(setShortBreakR(e.target.value));
+                dispatch(setShortBreakR(input));
                 dispatch(setMinutesR(shortBreak))
-
-                    break;
+                break;
 
             case "longBreak":
-                dispatch(setLongBreakR(e.target.value))
-                dispatch(setMinutesR(longBreak))
+                dispatch(setLongBreakR(input))
+                dispatch(setMinutesR(input))
 
-                console.log("Inisde long Break")
                 break;
         }
     }
